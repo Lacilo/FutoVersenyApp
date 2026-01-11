@@ -6,13 +6,36 @@ using System.Threading.Tasks;
 using FutoversenyApp.Models;
 using System.IO;
 using System.Text.Json;
+using menu.Models;
 
 namespace FutoversenyApp
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
+            bool megadva = false;
+            if (File.Exists("User.json"))
+            {
+                megadva = true;
+            }
+
+            
+            string megadvat = "";
+
+            if (megadva)
+            {
+                megadvat = "(megadava)";
+            }
+
+            CenterEngine.Show(
+                "================= Futó App =================",
+                $"1: Személes Adatok Megadása {megadvat}",
+                "2: Edzés Rögzítése"
+            );
+
+            CenterEngine.ReadCentered("");
+
             List<Futas> futasok = Futas.RunsJsonReader("futasok.json");
 
             DateTime datum = Console.ReadLine() != null ? DateTime.Parse(Console.ReadLine()) : DateTime.Now;
