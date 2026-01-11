@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Text.Json;
 
 namespace FutoversenyApp.Models
@@ -13,7 +7,7 @@ namespace FutoversenyApp.Models
     {
         private int magassag;
         private int tomeg;
-        private int nyugpul;
+        private static int nyugpul;
         private int celido;
 
         public User(int magassag, int tomeg, int nyugpul, int celido)
@@ -39,7 +33,7 @@ namespace FutoversenyApp.Models
 
         public int Magassag { get { return magassag; } set { if (value > 0) magassag = value; } }
         public int Tomeg { get { return tomeg; } set { if (value > 0) tomeg = value; } }
-        public int Nyugpul { get { return nyugpul; } set { if (value > 0) nyugpul = value; } }
+        public static int Nyugpul { get { return nyugpul; } set { if (value > 0) nyugpul = value; } }
         public int Celido { get { return celido; } set { if (value > 0) celido = value; } }
 
         public override string ToString()

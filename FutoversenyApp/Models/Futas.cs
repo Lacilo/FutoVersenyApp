@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-
 
 namespace FutoversenyApp.Models
 {
@@ -37,10 +33,10 @@ namespace FutoversenyApp.Models
 
         }
 
-        public DateTime Datum { get => datum; set => datum = value; }
-        public int Tavolsag { get => tavolsag; set => tavolsag = value; }
-        public string Idotartam { get => idotartam; set => idotartam = value; }
-        public int Maxpulzus { get => maxpulzus; set => maxpulzus = value; }
+        public DateTime Datum { get { return datum; } set { if (value <= DateTime.Now) datum = value; } }
+        public int Tavolsag { get { return tavolsag; } set { if (value > 0) tavolsag = value; } }
+        public string Idotartam { get => idotartam; set => idotartam = value; } // Ezzel még nem tudom mi lesz, marad így
+        public int Maxpulzus { get { return maxpulzus; } set { if (value > User.Nyugpul) maxpulzus = value; else User.Nyugpul = value; } }
 
         public override string ToString()
         {
