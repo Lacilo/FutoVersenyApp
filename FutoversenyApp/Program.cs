@@ -13,6 +13,19 @@ namespace FutoversenyApp
     {
         static void Main(string[] args)
         {
+            List<Futas> futasok = Futas.RunsJsonReader("futasok.json");
+
+            DateTime datum = Console.ReadLine() != null ? DateTime.Parse(Console.ReadLine()) : DateTime.Now;
+            int tavolsag = int.Parse(Console.ReadLine());
+            string idotartam = Console.ReadLine();
+            int maxpulzus = int.Parse(Console.ReadLine());
+
+            Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
+            futasok.Add(ujFutas);
+            Futas.JsonWriter(futasok);
+
+            Console.WriteLine("hallo");
+            Console.ReadLine();
         }
     }
 }
