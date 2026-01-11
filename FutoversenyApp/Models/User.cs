@@ -12,13 +12,13 @@ namespace FutoversenyApp.Models
         private int celido;
         private DateTime szuldat;
 
-        public User(int magassag, int tomeg, int nyugpul, int celido, DateTime szuldat)
+        public User(string magassag, string tomeg, string nyugpul, string celido, string szuldat)
         {
-            Magassag = magassag;
-            Tomeg = tomeg;
-            Nyugpul = nyugpul;
-            Celido = celido;
-            Szuldat = szuldat;
+            Magassag = int.Parse(magassag);
+            Tomeg = int.Parse(tomeg);
+            Nyugpul = int.Parse(nyugpul);
+            Celido = int.Parse(celido);
+            Szuldat = DateTime.Parse(szuldat);
         }
 
         public User(string[] user) // Miért nincs var[] :(

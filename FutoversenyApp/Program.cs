@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FutoversenyApp.Models;
 using System.IO;
-using System.Text.Json;
 using menu.Models;
 
 namespace FutoversenyApp
@@ -86,11 +82,16 @@ namespace FutoversenyApp
 
         static void Edzes()
         {
-            List<Futas> futasok = Futas.RunsJsonReader("futasok.json");
+            List<Futas> futasok = new List<Futas>();
+
+            if (new FileInfo("Runs.json").Length > 0)
+            {
+                futasok = Futas.RunsJsonReader("Runs.json");
+            }
 
             string input = CenterEngine.ReadCentered("Dátum: ");
             DateTime datum;
-            if (input == null)
+            if (input == "")
             {
                 datum = DateTime.Now;
             }
@@ -109,10 +110,57 @@ namespace FutoversenyApp
         }
 
         static void Szerkesztes()
-        { }
+        {
+            List<Futas> futasok = new List<Futas>();
+
+            if (new FileInfo("Runs.json").Length > 0)
+            {
+                futasok = Futas.RunsJsonReader("Runs.json");
+            }
+
+            for (int i = 0; i < futasok.Count; i++)
+            {
+                Console.WriteLine(futasok[i]);
+            }
+            int kivalasztott = int.Parse(CenterEngine.ReadCentered("Index: "));
+
+            string input = CenterEngine.ReadCentered("Dátum: ");
+            DateTime datum;
+            if (input == null)
+            {
+                datum = DateTime.Now;
+            }
+            else
+            {
+                datum = DateTime.Parse(input);
+            }
+
+            int tavolsag = int.Parse(CenterEngine.ReadCentered("Távolság: "));
+            string idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
+            int maxpulzus = int.Parse(CenterEngine.ReadCentered("Maximális Pulzus: "));
+
+            Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
+            futasok[kivalasztott] = ujFutas;
+            Futas.JsonWriter(futasok);
+        }
 
         static void Torles()
-        { }
+        {
+            List<Futas> futasok = new List<Futas>();
+
+            if (new FileInfo("Runs.json").Length > 0)
+            {
+                futasok = Futas.RunsJsonReader("Runs.json");
+            }
+            for (int i = 0; i < futasok.Count; i++)
+            {
+                Console.WriteLine(futasok[i]);
+            }
+            int kivalasztott = int.Parse(CenterEngine.ReadCentered("Index: "));
+
+            futasok.RemoveAt(kivalasztott);
+            Futas.JsonWriter(futasok);
+        }
 
         static void Exit()
         {
