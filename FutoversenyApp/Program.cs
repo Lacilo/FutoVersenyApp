@@ -53,6 +53,9 @@ namespace FutoversenyApp
                 case "4":
                     Torles();
                     break;
+                case "5":
+                    Exit();
+                    break;
                 default:
                     CenterEngine.Show("Érvénytelen választás!");
                     break;
@@ -110,5 +113,25 @@ namespace FutoversenyApp
 
         static void Torles()
         { }
+
+        static void Exit()
+        {
+            CenterEngine.Show(
+                "================= Futó App =================",
+                "1: Igen",
+                "2: Nem"
+            );
+            string ans = CenterEngine.ReadCentered("");
+
+            switch (ans)
+            {
+                case "1":
+                    Environment.Exit(0);
+                    break;
+                case "2":
+                    Main();
+                    break;
+            }
+        }
     }
 }
