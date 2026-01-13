@@ -9,13 +9,17 @@ namespace FutoversenyApp.Models
 {
     internal class Display
     {
-        private List<Futas> futasok;        
+        private List<Futas> futasok;
+
+        int cursor;
 
         internal List<Futas> Futasok { get => futasok; set => futasok = value; }
+        public int Cursor { get => cursor; set => cursor = value; }
 
-        public Display(List<Futas> futasok)
+        public Display(List<Futas> futasok, int cursor, int runSelected)
         {
             Futasok = futasok;
+            Cursor = cursor;
         }
 
         void UpdateFutasok(List<Futas> ujFutasok)
@@ -29,6 +33,11 @@ namespace FutoversenyApp.Models
             {
                 Console.WriteLine($"{futas.Datum} | {futas.Tavolsag} | {futas.Idotartam} | {futas.Maxpulzus}");
             }
+        }
+
+        void DisplaySelected()
+        {
+
         }
     }
 }
