@@ -22,22 +22,56 @@ namespace FutoversenyApp.Models
             Cursor = cursor;
         }
 
-        void UpdateFutasok(List<Futas> ujFutasok)
+        public Display() 
+        { 
+            
+        }
+
+        public void UpdateFutasok(List<Futas> ujFutasok)
         {
             Futasok = ujFutasok;
         }
 
-        void DisplayFutasok()
+        public void GetDisplayInput()
         {
-            foreach (Futas futas in Futasok)
+            ConsoleKeyInfo key = Console.ReadKey();
+
+            while (true)
             {
-                Console.WriteLine($"{futas.Datum} | {futas.Tavolsag} | {futas.Idotartam} | {futas.Maxpulzus}");
+                switch (key.Key)
+                {
+                    case ConsoleKey.DownArrow:
+                        cursor++;
+                        break;
+
+                    case ConsoleKey.UpArrow:
+                        cursor--;
+                        break;
+                }
+
+                Console.Clear();
+                DisplayFutasok();
+                key = Console.ReadKey();
             }
         }
 
-        void DisplaySelected()
+        public void DisplayFutasok()
         {
+            foreach (Futas futas in Futasok)
+            {
+                if (cursor == Futasok.IndexOf(futas)) 
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("-> ");                    
+                }
+                else
+                {
+                    Console.Write("   ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
 
+                    Console.WriteLine($"{futas.Datum} | {futas.Tavolsag} | {futas.Idotartam} | {futas.Maxpulzus} ");
+            }
         }
     }
 }

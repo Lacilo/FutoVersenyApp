@@ -10,7 +10,28 @@ namespace FutoversenyApp
     {
         public static void Main()
         {
+            Display display = new Display();
+            
+            List<Futas> futasok = new List<Futas>();
 
+            for (int i = 0; i < 10; i++) 
+            {
+                futasok.Add(new Futas());    
+            }
+
+            //foreach (var item in futasok)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            display.UpdateFutasok(futasok);
+
+            display.DisplayFutasok();
+            display.GetDisplayInput();
+
+
+
+            /*
             // ha létezik a User.json fájl, akkor a menüben jelezze, hogy meg van adva a személyes adat
             bool megadva = false;
             if (File.Exists("User.json"))
@@ -58,6 +79,7 @@ namespace FutoversenyApp
             }
 
             Console.ReadLine();
+            */
         }
 
         static void SzAdatok()
