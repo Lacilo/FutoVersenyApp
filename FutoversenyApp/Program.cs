@@ -13,7 +13,7 @@ namespace FutoversenyApp
         public static Display display = new Display();
         public static void Main() 
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 55; i++)
             {
                 futasok.Add(new Futas());
             }
