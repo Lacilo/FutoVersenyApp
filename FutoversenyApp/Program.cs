@@ -63,7 +63,7 @@ namespace FutoversenyApp
                     Controller.SzAdatok();
                     break;
                 case "2":
-                    Controller.Edzes(futasok);
+                    Controller.Edzes();
                     break;
                 case "3":
                     display.UpdateFutasok(futasok);
@@ -71,10 +71,10 @@ namespace FutoversenyApp
                     display.GetDisplayInput();
                     break;
                 case "4":
-                    Controller.Szerkesztes(futasok);
+                    Controller.Szerkesztes();
                     break;
                 case "5":
-                    Controller.Torles(futasok);
+                    Controller.Torles();
                     break;
                 case "6":
                     Exit();
