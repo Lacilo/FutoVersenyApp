@@ -47,7 +47,7 @@ namespace FutoversenyApp.Models
         /// Beolvassa a futások .json fájlját
         /// </summary>
         /// <param name="filename">A fájl amit beolvas</param>
-        /// <returns>Egy listát ami a futásokból készített objektumokat tartalmaz</returns>
+        /// <returns>Egy listát ami a futásokból készített Futás objektumokat tartalmaz</returns>
         public static List<Futas> RunsJsonReader(string filename)
         {
             string json = File.ReadAllText(filename);

@@ -17,26 +17,22 @@ namespace FutoversenyApp.Controllers
                 Program.Main();
             }
 
-            User user = User.UserJsonReader("User.json");
             string magassag = CenterEngine.ReadCentered("Magasság: ");
             string tomeg = CenterEngine.ReadCentered("Tömeg: ");
             string nyugpul = CenterEngine.ReadCentered("Nyugalmi Pulzus: ");
             string celido = CenterEngine.ReadCentered("Célidő (perc): ");
             string szuldat = CenterEngine.ReadCentered("Születési Dátum (ÉÉÉÉ.HH.NN): ");
+            if (szuldat == "")
+            {
+                szuldat = DateTime.Now.ToString();
+            }
 
             User ujUser = new User(magassag, tomeg, nyugpul, celido, szuldat);
             User.JsonWriter(ujUser);
         }
 
-        public static void Edzes()
+        public static void Edzes(List<Futas> futasok)
         {
-            List<Futas> futasok = new List<Futas>();
-
-            if (new FileInfo("Runs.json").Length > 0)
-            {
-                futasok = Futas.RunsJsonReader("Runs.json");
-            }
-
             string datum = CenterEngine.ReadCentered("Dátum: ");
             if (datum == "")
             {
@@ -51,15 +47,11 @@ namespace FutoversenyApp.Controllers
             Futas.JsonWriter(futasok);
         }
 
-        public static void Szerkesztes()
+        /// <summary>
+        /// Újra bekéri az edzés adatait, majd új objektumot hoz létre a régi edzés helyén
+        /// </summary>
+        public static void Szerkesztes(List<Futas> futasok)
         {
-            List<Futas> futasok = new List<Futas>();
-
-            if (new FileInfo("Runs.json").Length > 0)
-            {
-                futasok = Futas.RunsJsonReader("Runs.json");
-            }
-
             for (int i = 0; i < futasok.Count; i++)
             {
                 Console.WriteLine(futasok[i]);
@@ -80,14 +72,11 @@ namespace FutoversenyApp.Controllers
             Futas.JsonWriter(futasok);
         }
 
-        public static void Torles()
+        /// <summary>
+        /// Kitörli a kiválasztott edzést
+        /// </summary>
+        public static void Torles(List<Futas> futasok)
         {
-            List<Futas> futasok = new List<Futas>();
-
-            if (new FileInfo("Runs.json").Length > 0)
-            {
-                futasok = Futas.RunsJsonReader("Runs.json");
-            }
             for (int i = 0; i < futasok.Count; i++)
             {
                 Console.WriteLine(futasok[i]);
