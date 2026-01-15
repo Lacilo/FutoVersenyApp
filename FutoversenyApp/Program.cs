@@ -1,4 +1,10 @@
-﻿using System;
+﻿// TODO:
+// - Előzőleges terv (ami kész arra is)
+// - Dokumentáció
+// - Pulzus időbeli változása
+// - Átlagsebesség időbeli változása
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using FutoversenyApp.Models;
