@@ -99,7 +99,7 @@ namespace FutoversenyApp.Models
                 Console.SetCursorPosition(0, 10);
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine($"\n   Oldal: {page + 1} / {allPage} | Jelenlegi elem: {currentDisplay + 1}");
+                Console.WriteLine($"\n   Oldal: {page + 1} / {allPage} | Jelenlegi elem: {currentDisplay + 1}   ");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
                 // Console.WriteLine($"{page}\n{posOnPage}\nettől: {page*10}\njelenlegi: {currentDisplay}");
