@@ -83,7 +83,7 @@ namespace FutoversenyApp.Models
                         posOnPage = 0;
                         break;
 
-                    case ConsoleKey.Q:
+                    case ConsoleKey.Escape:
                         exit = true;
                         Program.Menu();
                         break;
