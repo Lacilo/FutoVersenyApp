@@ -12,12 +12,12 @@ namespace FutoversenyApp.Models
         private string idotartam;
         private int maxpulzus;
 
-        public Futas(DateTime datum, int tavolsag, string idotartam, int maxpulzus)
+        public Futas(string datum, string tavolsag, string idotartam, string maxpulzus)
         {
-            Datum = datum;
-            Tavolsag = tavolsag;
+            Datum = DateTime.Parse(datum);
+            Tavolsag = int.Parse(tavolsag);
             Idotartam = idotartam;
-            Maxpulzus = maxpulzus;
+            Maxpulzus = int.Parse(maxpulzus);
         }
 
         public Futas(string[] futas)

@@ -12,6 +12,7 @@ namespace FutoversenyApp
         public static List<Futas> futasok = new List<Futas>();
         public static void Main()
         {
+            FilesExist();
             Menu();
         }
 
@@ -19,7 +20,7 @@ namespace FutoversenyApp
         {
             // ha létezik a User.json fájl, akkor a menüben jelezze, hogy meg van adva a személyes adat
             bool megadva = false;
-            if (File.Exists("User.json"))
+            if (new FileInfo("User.json").Length > 0)
             {
                 megadva = true;
             }
@@ -88,6 +89,18 @@ namespace FutoversenyApp
                 case "2":
                     Main();
                     break;
+            }
+        }
+
+        static void FilesExist()
+        {
+            if (!File.Exists("Runs.json"))
+            {
+                File.Create("Runs.json").Close();
+            }
+            if (!File.Exists("User.json"))
+            {
+                File.Create("User.json").Close();
             }
         }
     }

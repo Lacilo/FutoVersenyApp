@@ -21,7 +21,7 @@ namespace FutoversenyApp.Models
             Szuldat = DateTime.Parse(szuldat);
         }
 
-        public User(string[] user) // Miért nincs var[] :(
+        public User(string[] user)
         {
             Magassag = int.Parse(user[0]);
             Tomeg = int.Parse(user[1]);

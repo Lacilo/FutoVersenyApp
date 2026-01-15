@@ -10,7 +10,7 @@ namespace FutoversenyApp.Controllers
     {
         public static void SzAdatok()
         {
-            if (File.Exists("User.json"))
+            if (new FileInfo("User.json").Length > 0)
             {
                 CenterEngine.Show("Már meg vannak adva a személyes adatok!");
                 CenterEngine.ReadCentered("");
@@ -37,20 +37,14 @@ namespace FutoversenyApp.Controllers
                 futasok = Futas.RunsJsonReader("Runs.json");
             }
 
-            string input = CenterEngine.ReadCentered("Dátum: ");
-            DateTime datum;
-            if (input == "")
+            string datum = CenterEngine.ReadCentered("Dátum: ");
+            if (datum == "")
             {
-                datum = DateTime.Now;
+                datum = DateTime.Now.ToString();
             }
-            else
-            {
-                datum = DateTime.Parse(input);
-            }
-
-            int tavolsag = int.Parse(CenterEngine.ReadCentered("Távolság: "));
+            string tavolsag = CenterEngine.ReadCentered("Távolság: ");
             string idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
-            int maxpulzus = int.Parse(CenterEngine.ReadCentered("Maximális Pulzus: "));
+            string maxpulzus = CenterEngine.ReadCentered("Maximális Pulzus: ");
 
             Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
             futasok.Add(ujFutas);
@@ -72,20 +66,14 @@ namespace FutoversenyApp.Controllers
             }
             int kivalasztott = int.Parse(CenterEngine.ReadCentered("Index: "));
 
-            string input = CenterEngine.ReadCentered("Dátum: ");
-            DateTime datum;
-            if (input == null)
+            string datum = CenterEngine.ReadCentered("Dátum: ");
+            if (datum == "")
             {
-                datum = DateTime.Now;
+                datum = DateTime.Now.ToString();
             }
-            else
-            {
-                datum = DateTime.Parse(input);
-            }
-
-            int tavolsag = int.Parse(CenterEngine.ReadCentered("Távolság: "));
+            string tavolsag = CenterEngine.ReadCentered("Távolság: ");
             string idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
-            int maxpulzus = int.Parse(CenterEngine.ReadCentered("Maximális Pulzus: "));
+            string maxpulzus = CenterEngine.ReadCentered("Maximális Pulzus: ");
 
             Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
             futasok[kivalasztott] = ujFutas;
