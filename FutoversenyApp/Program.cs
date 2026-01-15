@@ -33,9 +33,10 @@ namespace FutoversenyApp
                 "================= Futó App =================",
                 $"1: Személes Adatok Megadása {megadvat}",
                 "2: Edzés Rögzítése",
-                "3: Szerkestés",
-                "4: Törlés",
-                "5: Kilépés"
+                "3: Edzések Megjelenítése",
+                "4: Szerkestés",
+                "5: Törlés",
+                "6: Kilépés"
             );
 
             string ans = CenterEngine.ReadCentered("");
@@ -49,12 +50,15 @@ namespace FutoversenyApp
                     Edzes();
                     break;
                 case "3":
-                    Szerkesztes();
+                    // Edzések Megjelenítése function
                     break;
                 case "4":
-                    Torles();
+                    Szerkesztes();
                     break;
                 case "5":
+                    Torles();
+                    break;
+                case "6":
                     Exit();
                     break;
                 default:
