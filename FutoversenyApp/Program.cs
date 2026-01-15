@@ -8,6 +8,7 @@ namespace FutoversenyApp
 {
     internal class Program
     {
+        public static List<Futas> futasok = new List<Futas>();
         public static void Main()
         {
             Menu();
