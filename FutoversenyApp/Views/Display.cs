@@ -110,7 +110,7 @@ namespace FutoversenyApp.Models
 
             if (fromThisPos + 10 > Futasok.Count())
             {
-                until = page*10 - Futasok.Count();
+                until = page * 10 - Futasok.Count();
             }
             else
             {
