@@ -9,7 +9,8 @@ namespace FutoversenyApp
     internal class Program
     {
         public static void Main()
-        {            
+        {   
+            /*
             // ha létezik a User.json fájl, akkor a menüben jelezze, hogy meg van adva a személyes adat
             bool megadva = false;
             if (File.Exists("User.json"))
@@ -57,6 +58,7 @@ namespace FutoversenyApp
             }
 
             Console.ReadLine();
+            */
             
         }
 
