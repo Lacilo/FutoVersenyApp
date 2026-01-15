@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FutoversenyApp.Controllers;
 
 
 //TESZTELÉSHEZ:
@@ -61,6 +62,8 @@ namespace FutoversenyApp.Models
             int page = 0;
             int allPage = (int)(Math.Ceiling(Futasok.Count / 10.0f));
 
+            DisplayFutasok(page * 10);
+
             while (true)
             {
                 switch (key.Key)
@@ -83,6 +86,12 @@ namespace FutoversenyApp.Models
                         posOnPage = 0;
                         break;
 
+                    case ConsoleKey.Delete:
+                        Controller.Torles(Futasok, currentDisplay);
+
+                    case ConsoleKey.E:
+                        Controller.Szerkesztes(Futasok, currentDisplay);
+
                     case ConsoleKey.Escape:
                         exit = true;
                         Program.Menu();
@@ -98,6 +107,7 @@ namespace FutoversenyApp.Models
                 Console.WriteLine($"\n   Oldal: {page + 1} / {allPage} | Jelenlegi elem: {currentDisplay + 1}   ");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Szerkesztés: e\t Törlés: t");
                 // Console.WriteLine($"{page}\n{posOnPage}\nettől: {page*10}\njelenlegi: {currentDisplay}");
                 key = Console.ReadKey();
             }
@@ -108,16 +118,7 @@ namespace FutoversenyApp.Models
             Console.Clear();
             int until = 0;
 
-            if (fromThisPos + 10 > Futasok.Count())
-            {
-                until = page * 10 - Futasok.Count();
-            }
-            else
-            {
-                until = 10;
-            }
-
-
+            until = Math.Min(10, Futasok.Count - fromThisPos);
 
             for (int i = fromThisPos; i < fromThisPos + until; i++)
             {
