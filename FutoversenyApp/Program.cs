@@ -58,8 +58,8 @@ namespace FutoversenyApp
             }
 
             Console.ReadLine();
+            
         }
-
         static void SzAdatok()
         {
             if (File.Exists("User.json"))
