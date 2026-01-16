@@ -19,7 +19,6 @@ namespace FutoversenyApp.Models
             Nyugpul = int.Parse(nyugpul);
             Celido = int.Parse(celido);
             Szuldat = DateTime.Parse(szuldat);
-            new Futas().SetUserValues(int.Parse(tomeg), int.Parse(nyugpul));
         }
 
         public User(string[] user)
