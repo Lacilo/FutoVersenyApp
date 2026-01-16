@@ -70,10 +70,18 @@ namespace FutoversenyApp.Models
                 {
                     case ConsoleKey.DownArrow:
                         posOnPage++;
+                        if (posOnPage > (Futasok.Count - 1))
+                        {
+                            posOnPage = (Futasok.Count - 1);
+                        }
                         break;
 
                     case ConsoleKey.UpArrow:
                         posOnPage--;
+                        if (posOnPage < 0)
+                        {
+                            posOnPage = 0;
+                        }
                         break;
 
                     case ConsoleKey.LeftArrow:
