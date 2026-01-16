@@ -52,10 +52,10 @@ namespace FutoversenyApp.Controllers
             {
                 tomeg = user.Tomeg.ToString();
             }
-            string nyugpul = CenterEngine.ReadCentered($"Nyugalmi Pulzus ({User.Nyugpul}): ");
+            string nyugpul = CenterEngine.ReadCentered($"Nyugalmi Pulzus ({user.Nyugpul}): ");
             if (nyugpul == "")
             {
-                nyugpul = User.Nyugpul.ToString();
+                nyugpul = user.Nyugpul.ToString();
             }
             string celido = CenterEngine.ReadCentered($"Célidő ({user.Celido}perc): ");
             if (celido == "")
