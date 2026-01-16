@@ -89,12 +89,21 @@ namespace FutoversenyApp.Models
                     case ConsoleKey.LeftArrow:
                         page--;
                         posOnPage = 0;
+                        if (page < 0)
+                        {
+                            page = 0;
+                        }
                         break;
 
                     case ConsoleKey.RightArrow:
                         page++;
                         posOnPage = 0;
+                        if (page > (allPage - 1))
+                        {
+                            page = allPage - 1;
+                        }
                         break;
+
                     case ConsoleKey.Delete:
                         Controller.Torles(Futasok, currentDisplay);
                         break;
