@@ -122,22 +122,31 @@ namespace FutoversenyApp.Models
 
             until = Math.Min(10, Futasok.Count - fromThisPos);
 
-            for (int i = fromThisPos; i < fromThisPos + until; i++)
+            if(Futasok.Count() != 0)
             {
-                if (currentDisplay == i)
+                for (int i = fromThisPos; i < fromThisPos + until; i++)
                 {
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.Write("-> ");
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.Write("   ");
-                }
+                    if (currentDisplay == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.Write("-> ");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.Write("   ");
+                    }
 
-                Console.WriteLine($"{Futasok[i].Datum} | {Futasok[i].Tavolsag} | {Futasok[i].Idotartam} | {Futasok[i].Maxpulzus} ");
+                    Console.WriteLine($"{Futasok[i].Datum} | {Futasok[i].Tavolsag} | {Futasok[i].Idotartam} | {Futasok[i].Maxpulzus} ");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nincs még adat");
+                Console.ReadKey();
+                Program.Menu();
             }
         }
 
