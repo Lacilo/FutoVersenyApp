@@ -159,10 +159,10 @@ namespace FutoversenyApp
                     display.GetDisplayInput();
                     break;
                 case 3:
-                    Controller.Szerkesztes(futasok);
+                    Controller.Szerkesztes(futasok, 0);
                     break;
                 case 4:
-                    Controller.Torles(futasok);
+                    Controller.Torles(futasok, 0);
                     break;
                 case 5:
                     Exit();
