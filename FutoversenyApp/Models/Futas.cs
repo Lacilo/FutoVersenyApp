@@ -69,5 +69,11 @@ namespace FutoversenyApp.Models
             string json = JsonSerializer.Serialize(futas, options);
             File.WriteAllText("Runs.json", json);
         }
+
+        public static float AtlagSebesseg(Futas futas)
+        {
+            float atlagsebesseg = (float)futas.Tavolsag / float.Parse(futas.Idotartam  60);
+            return atlagsebesseg;
+        }
     }
 }
