@@ -72,7 +72,10 @@ namespace FutoversenyApp.Models
 
         public static float AtlagSebesseg(Futas futas)
         {
-            float atlagsebesseg = (float)futas.Tavolsag / float.Parse(futas.Idotartam  60);
+            // óó:pp:mm, return m/s érték, * 3.6 ha km/h
+            string[] ido = futas.Idotartam.Split(':');
+            int timeInSeconds = (int.Parse(ido[0]) * 60 * 60) + (int.Parse(ido[1]) * 60) + int.Parse(ido[2]);
+            float atlagsebesseg = (float)futas.Tavolsag / (float)timeInSeconds;
             return atlagsebesseg;
         }
     }
