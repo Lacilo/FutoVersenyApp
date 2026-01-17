@@ -112,6 +112,10 @@ namespace FutoversenyApp.Models
                         Controller.Szerkesztes(Futasok, currentDisplay);
                         break;
 
+                    case ConsoleKey.C:
+                        // Létrehozás függvény meghívása
+                        break;
+
                     case ConsoleKey.Escape:
                         exit = true;
                         Program.Menu();
@@ -127,7 +131,7 @@ namespace FutoversenyApp.Models
                 Console.WriteLine($"\n   Oldal: {page + 1} / {allPage} | Jelenlegi elem: {currentDisplay + 1}   ");
                 Console.BackgroundColor = Program.background;
                 Console.ForegroundColor = Program.textcolor;
-                Console.WriteLine("Szerkesztés: e\t Törlés: Delete");
+                Console.WriteLine("Szerkesztés: e\t Törlés: Delete\nLétrehozás: C");
                 // Console.WriteLine($"{page}\n{posOnPage}\nettől: {page*10}\njelenlegi: {currentDisplay}");
                 key = Console.ReadKey();
             }
@@ -137,6 +141,8 @@ namespace FutoversenyApp.Models
         {
             Console.BackgroundColor = Program.background;
             Console.Clear();
+            Console.WriteLine("");
+
             int until = 0;
 
             until = Math.Min(10, Futasok.Count - fromThisPos);
@@ -158,7 +164,7 @@ namespace FutoversenyApp.Models
                         Console.Write("   ");
                     }
 
-                    Console.WriteLine($"{Futasok[i].Datum} | {Futasok[i].Tavolsag} | {Futasok[i].Idotartam} | {Futasok[i].Maxpulzus} ");
+                    Console.WriteLine($"{Futasok[i].Datum}\t{Futasok[i].Tavolsag} méter\t{Futasok[i].Idotartam} óra\t{Futasok[i].Maxpulzus} bpm ");
                 }
             }
             else

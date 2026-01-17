@@ -145,5 +145,118 @@ namespace FutoversenyApp.Controllers
             futasok.RemoveAt(kivalasztott);
             Futas.JsonWriter(futasok);
         }
+        public static Futas Min(List<Futas> futasok, char mode)
+        {
+            Futas min = new Futas();
+
+            foreach (Futas futas in futasok)
+            {
+                if (mode == 'd')
+                {
+                    if (futas.Datum < min.Datum)
+                    {
+                        min = futas;
+                    }
+                }
+
+                if (mode == 't')
+                {
+                    if (futas.Tavolsag < min.Tavolsag)
+                    {
+                        min = futas;
+                    }
+                }
+
+                if (mode == 'i')
+                {
+                    //if(futas.Idotartam < max.Idotartam)
+                    //{
+                    //    min = futas;
+                    //}
+                }
+
+                if (mode == 'm')
+                {
+                    if (futas.Maxpulzus < min.Maxpulzus)
+                    {
+                        min = futas;
+                    }
+                }
+            }
+
+            return min;
+        }
+
+        public static Futas Max(List<Futas> futasok, char mode)
+        {
+            Futas max = new Futas();
+
+            foreach (Futas futas in futasok)
+            {
+                if(mode == 'd')
+                {
+                    if (futas.Datum > max.Datum)
+                    {
+                        max = futas;
+                    }
+                }
+
+                if (mode == 't')
+                {
+                    if (futas.Tavolsag > max.Tavolsag)
+                    {
+                        max = futas;
+                    }
+                }
+
+                if (mode == 'i')
+                {
+                    //if(futas.Idotartam > max.Idotartam)
+                    //{
+                    //    max = futas;
+                    //}
+                }
+
+                if (mode == 'm')
+                {
+                    if(futas.Maxpulzus > max.Maxpulzus)
+                    {
+                        max = futas;
+                    }
+                }
+            }
+
+            return max;
+        }
+
+        /// <summary>
+        /// sorba rendez egy listát a megadott mód szerint (d - Date, t - Távolság, i - Időtartam, m - Max pulzus) és ha kell csökkenő de alapértelmezetten növekvő sorrendben(asc = true)
+        /// </summary>
+        /// <param name="futasok"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public static List<Futas> Sort(List<Futas> futasok, char mode = 'd', bool asc = true)
+        {
+            List<Futas> sortedFutas = new List<Futas>();
+            Futas maxFutas = new Futas();
+
+            for (int i = 0; i < futasok.Count; i++)
+            {
+                if (asc)
+                {
+                    maxFutas = Max(futasok, mode);
+                    sortedFutas.Add(maxFutas);
+                    futasok.Remove(maxFutas);
+                }
+                else
+                {
+                    maxFutas = Min(futasok, mode);
+                    sortedFutas.Add(maxFutas);
+                    futasok.Remove(maxFutas);
+                }
+            }
+
+            return new List<Futas> { };
+        }
     }
 }
