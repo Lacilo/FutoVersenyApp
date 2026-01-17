@@ -125,8 +125,15 @@ namespace FutoversenyApp.Controllers
                 maxpulzus = futasok[kivalasztott].Maxpulzus.ToString();
             }
 
-            Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
-            futasok[kivalasztott] = ujFutas;
+            // Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
+            // futasok[kivalasztott] = ujFutas;
+
+            // Új megoldás mert az előző felűlírta a pulzust és tömeget mivel új objektumot hoztunk létre
+            futasok[kivalasztott].Datum = DateTime.Parse(datum);
+            futasok[kivalasztott].Tavolsag = int.Parse(tavolsag);
+            futasok[kivalasztott].Idotartam = idotartam;
+            futasok[kivalasztott].Maxpulzus = int.Parse(maxpulzus);
+
             Futas.JsonWriter(futasok);
         }
 
