@@ -7,8 +7,6 @@ namespace FutoversenyApp.Models
 {
     internal class Futas
     {
-        readonly User user = User.UserJsonReader("User.json");
-
         private DateTime datum;
         private int tavolsag;
         private string idotartam;
@@ -16,6 +14,9 @@ namespace FutoversenyApp.Models
 
         public Futas(string datum, string tavolsag, string idotartam, string maxpulzus)
         {
+            User user = User.UserJsonReader("User.json");
+            this.Tomeg = user.Tomeg;
+            this.Nyugpul = user.Nyugpul;
             Datum = DateTime.Parse(datum);
             Tavolsag = int.Parse(tavolsag);
             Idotartam = idotartam;
@@ -24,6 +25,9 @@ namespace FutoversenyApp.Models
 
         public Futas(string[] futas)
         {
+            User user = User.UserJsonReader("User.json");
+            this.Tomeg = user.Tomeg;
+            this.Nyugpul = user.Nyugpul;
             Datum = DateTime.Parse(futas[0]);
             Tavolsag = int.Parse(futas[1]);
             Idotartam = futas[2];
@@ -38,9 +42,10 @@ namespace FutoversenyApp.Models
         public DateTime Datum { get { return datum; } set { if (value <= DateTime.Now) datum = value; } }
         public int Tavolsag { get { return tavolsag; } set { if (value > 0) tavolsag = value; } }
         public string Idotartam { get => idotartam; set => idotartam = value; } // Ezzel még nem tudom mi lesz, marad így
+        public int Tomeg { get; set; }
+        public int Nyugpul { get; set; }
         public int Maxpulzus { get { return maxpulzus; } set { if (value > Nyugpul) maxpulzus = value; else maxpulzus = Nyugpul; } }
-        public int Tomeg { get { return user.Tomeg; } }
-        public int Nyugpul { get { return user.Nyugpul; } }
+
 
         public override string ToString()
         {
