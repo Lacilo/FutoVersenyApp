@@ -324,8 +324,6 @@ namespace FutoversenyApp.Models
             Console.Clear();
 
             List<string[]> userData = user.szemelyHistory;
-            
-            until = Math.Min(until, userData.Count - fromThisPos);
 
             for (int i = fromThisPos; i < until; i++)
             {
@@ -341,7 +339,7 @@ namespace FutoversenyApp.Models
                 Console.BackgroundColor= ConsoleColor.Black;
             }
 
-            //Console.WriteLine($"{cursor}\n{fromThisPos} -> {until}");
+            //Console.WriteLine($"{cursor}\n{fromThisPos} -> {until}\n{user.szemelyHistory.Count - until}");
         }
 
         public void DisplayWeightAndBPMChangeMenu(User user)
@@ -351,7 +349,7 @@ namespace FutoversenyApp.Models
             int until = start + 10;
             int hossz = user.szemelyHistory.Count;
 
-            DisplayWABPM(user, start, wabpmCursor, until);
+            DisplayWABPM(user, start, wabpmCursor, Math.Min(until, hossz));
 
             if (hossz - until > 0)
             {
@@ -374,17 +372,20 @@ namespace FutoversenyApp.Models
                         wabpmCursor++;
                         //Console.WriteLine("le");
 
-                        if (wabpmCursor > 9) {
+
+                        if (wabpmCursor > 9)
+                        {
                             wabpmCursor = 9;
 
-                            if(start + 10 <= hossz-1)
+                            if (start + 10 <= hossz - 1)
                             {
                                 start++;
                                 until = start + 10;
-                            }                            
+                            }
                         }
-                        
-                        break;
+                        else if (wabpmCursor > hossz - 1) wabpmCursor = hossz - 1;
+
+                            break;
 
                     case ConsoleKey.UpArrow:
                         wabpmCursor--;
@@ -408,7 +409,7 @@ namespace FutoversenyApp.Models
                     until = start + 10;        
                 }
                 if (until > hossz) until = hossz;
-                DisplayWABPM(user, start, wabpmCursor, until);
+                DisplayWABPM(user, start, wabpmCursor, Math.Min(until, hossz));
 
                 if (hossz - until > 0)
                 {
