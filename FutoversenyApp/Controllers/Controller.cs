@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using FutoversenyApp.Models;
 using menu.Models;
-using FutoversenyApp;
 
 namespace FutoversenyApp.Controllers
 {
@@ -40,7 +38,7 @@ namespace FutoversenyApp.Controllers
             Console.BackgroundColor = Program.background;
             Console.ForegroundColor = Program.textcolor;
 
-            User user = User.UserJsonReader("User.json");
+            User user = User.UserJsonReader();
 
             string magassag = CenterEngine.ReadCentered($"Magasság ({user.Magassag}cm): ");
             if (magassag == "")

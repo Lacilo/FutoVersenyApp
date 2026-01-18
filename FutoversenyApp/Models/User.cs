@@ -55,11 +55,10 @@ namespace FutoversenyApp.Models
         /// <summary>
         /// Beolvassa a felhasználó .json fájlját
         /// </summary>
-        /// <param name="filename">A fájl amit beolvas</param>
         /// <returns>Egy User objektumot a fájlból</returns>
-        public static User UserJsonReader(string filename)
+        public static User UserJsonReader()
         {
-            string json = File.ReadAllText(filename);
+            string json = File.ReadAllText("User.json");
             User user = JsonSerializer.Deserialize<User>(json);
             return user;
         }

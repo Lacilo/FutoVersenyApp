@@ -14,7 +14,7 @@ namespace FutoversenyApp.Models
 
         public Futas(string datum, string tavolsag, string idotartam, string maxpulzus)
         {
-            User user = User.UserJsonReader("User.json");
+            User user = User.UserJsonReader();
             this.Tomeg = user.Tomeg;
             this.Nyugpul = user.Nyugpul;
             Datum = DateTime.Parse(datum);
@@ -25,7 +25,7 @@ namespace FutoversenyApp.Models
 
         public Futas(string[] futas)
         {
-            User user = User.UserJsonReader("User.json");
+            User user = User.UserJsonReader();
             this.Tomeg = user.Tomeg;
             this.Nyugpul = user.Nyugpul;
             Datum = DateTime.Parse(futas[0]);
@@ -55,11 +55,10 @@ namespace FutoversenyApp.Models
         /// <summary>
         /// Beolvassa a futások .json fájlját
         /// </summary>
-        /// <param name="filename">A fájl amit beolvas</param>
         /// <returns>Egy listát ami a futásokból készített Futás objektumokat tartalmaz</returns>
-        public static List<Futas> RunsJsonReader(string filename)
+        public static List<Futas> RunsJsonReader()
         {
-            string json = File.ReadAllText(filename);
+            string json = File.ReadAllText("Runs.json");
             List<Futas> futasok = JsonSerializer.Deserialize<List<Futas>>(json);
             return futasok;
         }
@@ -79,6 +78,10 @@ namespace FutoversenyApp.Models
             File.WriteAllText("Runs.json", json);
         }
 
+        /// <summary>
+        /// Kiszámolja az átlagsebességet km/h-bana a távolság és az időtartam alapján
+        /// </summary>
+        /// <returns>A futás objektum átlagsebességét km/h-ban</returns>
         public float AtlagSebesseg()
         {
             // óó:pp:mm, return km/h érték, / 3.6 ha m/s

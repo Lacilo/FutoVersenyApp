@@ -31,7 +31,7 @@ namespace FutoversenyApp
             //{
             //    futasok.Add(new Futas());
             //}
-            futasok = Futas.RunsJsonReader("Runs.json");
+            futasok = Futas.RunsJsonReader();
 
             Menu();
         }
