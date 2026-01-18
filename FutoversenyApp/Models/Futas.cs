@@ -176,5 +176,33 @@ namespace FutoversenyApp.Models
             return siker;
         }
 
+        /// <summary>
+        /// Kiszámolja, hogy összesen mennyi időt töltött a felhasználó futással
+        /// </summary>
+        /// <param name="futasok">A lista ami tárolja a futásokat</param>
+        /// <returns>Egy "nn:óó:pp:mm" formátumú string ami tartalmazza az összidőt</returns>
+        public static string Osszido(List<Futas> futasok)
+        {
+            int osszMp = 0;
+
+            foreach (Futas futas in futasok)
+            {
+                int ora = int.Parse(futas.Idotartam.Split(':')[0]);
+                int perc = int.Parse(futas.Idotartam.Split(':')[1]);
+                int mp = int.Parse(futas.Idotartam.Split(':')[2]);
+
+                osszMp += (ora * 3600) + (perc * 60) + mp;
+            }
+
+            // a %= b || a = a % b; úgy látszik ilyen is van, a kettő ugyanaz
+            int napok = osszMp / 86400;     // Napok kiszámolása, egésszé lekerekítve
+            osszMp %= 86400;                // Egyenlővé tesszük a maradékkal
+            int maradekOra = osszMp / 3600; // Órák kiszámálosa, egésszé lekerekítve
+            osszMp %= 3600;                 // Egyenlővé tesszük a maradékkal
+            int maradekPerc = osszMp / 60;  // Percek kiszámálosa, egésszé lekerekítve
+            int maradekMp = osszMp % 60;    // Egyenlővé tesszük a maradékkal
+
+            return $"{napok:D2}:{maradekOra:D2}:{maradekPerc:D2}:{maradekMp:D2}";
+        }
     }
 }
