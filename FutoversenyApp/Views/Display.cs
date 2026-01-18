@@ -71,6 +71,7 @@ namespace FutoversenyApp.Models
             Console.BackgroundColor = Program.background;
             Console.ForegroundColor = Program.textcolor;
             Console.WriteLine("Szerkesztés: e\t Törlés: Delete\nLétrehozás: c\t Szortírozás beállítások: s");
+            DisplaySeparator();
 
             ConsoleKeyInfo key = Console.ReadKey();                
 
@@ -145,6 +146,7 @@ namespace FutoversenyApp.Models
                 Console.BackgroundColor = Program.background;
                 Console.ForegroundColor = Program.textcolor;
                 Console.WriteLine("Szerkesztés: e\t Törlés: Delete\nLétrehozás: c\t Szortírozás beállítások: s");
+                DisplaySeparator();
                 // Console.WriteLine($"{page}\n{posOnPage}\nettől: {page*10}\njelenlegi: {currentDisplay}");
                 key = Console.ReadKey();
             }
@@ -305,6 +307,15 @@ namespace FutoversenyApp.Models
 
             Console.SetCursorPosition(80, 7);
             Console.WriteLine($"Átlagsebesség: {Futasok[currentDisplay].AtlagSebesseg()} km/h");
+        }
+
+        public void DisplaySeparator()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Console.SetCursorPosition(75, i);
+                Console.Write("||");
+            }
         }
     }
 }
