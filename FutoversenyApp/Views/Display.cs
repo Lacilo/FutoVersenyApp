@@ -162,7 +162,7 @@ namespace FutoversenyApp.Models
             }
             else
             {
-                Console.WriteLine("Növekvő sorrend");
+                Console.WriteLine("Növekvő sorrend ");
             }
         }
 
