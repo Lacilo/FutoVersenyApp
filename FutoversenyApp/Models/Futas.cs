@@ -81,11 +81,11 @@ namespace FutoversenyApp.Models
 
         public float AtlagSebesseg()
         {
-            // óó:pp:mm, return m/s érték, * 3.6 ha km/h
+            // óó:pp:mm, return km/h érték, / 3.6 ha m/s
             string[] ido = this.Idotartam.Split(':');
             int timeInSeconds = (int.Parse(ido[0]) * 60 * 60) + (int.Parse(ido[1]) * 60) + int.Parse(ido[2]);
             float atlagsebesseg = (float)this.Tavolsag / (float)timeInSeconds;
-            return atlagsebesseg;
+            return (float)(Math.Round(atlagsebesseg,1) * 3.6);
         }
     }
 }

@@ -288,7 +288,7 @@ namespace FutoversenyApp.Models
             Console.Write($"Futás Dátuma: {Futasok[currentDisplay].Datum}");
 
             Console.SetCursorPosition(70, 4);
-            Console.Write($"Lefutott távolság: {Futasok[currentDisplay].Tavolsag}");
+            Console.Write($"Lefutott távolság: {Futasok[currentDisplay].Tavolsag} méter");
 
             Console.SetCursorPosition(70, 5);
             Console.Write($"Futás Időtartama: {Futasok[currentDisplay].Idotartam}");
@@ -297,7 +297,7 @@ namespace FutoversenyApp.Models
             Console.Write($"Legmagasabb pulzus érték: {Futasok[currentDisplay].Maxpulzus}");
 
             Console.SetCursorPosition(70, 7);
-            Console.WriteLine("Átlag sebesség: Ide kerül majd az átlag sebesség");
+            Console.WriteLine($"Átlagsebesség: {Futasok[currentDisplay].AtlagSebesseg()} km/h");
         }
     }
 }
