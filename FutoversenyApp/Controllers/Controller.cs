@@ -94,7 +94,31 @@ namespace FutoversenyApp.Controllers
                 datum = DateTime.Now.ToString();
             }
             string tavolsag = CenterEngine.ReadCentered("Távolság (m): ");
-            string idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
+            string idotartam;
+            while (true)
+            {
+                idotartam = CenterEngine.ReadCentered("Időtartam (óó:pp:mm): ");
+                try
+                {
+                    int teszt = int.Parse(idotartam.Split(':')[1]) * 1; // Teszt instrukció hogy legyen ami errort ad
+
+                    try
+                    {
+                        teszt = int.Parse(idotartam.Split(':')[2]) * 1; // Teszt instrukció hogy legyen ami errort ad
+                    }
+                    catch (Exception)
+                    {
+                        idotartam += ":00"; // Ha nincs mehadva másodperc akkor ne crash
+                        break;
+                    }
+
+                    break;
+                }
+                catch (Exception)
+                {
+                    CenterEngine.CenterLine("Hibás formátum! Az időtartamot a következő formátumba adja meg: óó:pp:mm");
+                }
+            }
             string maxpulzus = CenterEngine.ReadCentered("Maximális Pulzus: ");
 
             Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
@@ -125,6 +149,32 @@ namespace FutoversenyApp.Controllers
             if (idotartam == "")
             {
                 idotartam = futasok[kivalasztott].Idotartam;
+            }
+            else
+            {
+                while (true)
+                {
+                    try
+                    {
+                        int teszt = int.Parse(idotartam.Split(':')[1]) * 1; // Teszt instrukció hogy legyen ami errort ad
+
+                        try
+                        {
+                            teszt = int.Parse(idotartam.Split(':')[2]) * 1; // Teszt instrukció hogy legyen ami errort ad
+                        }
+                        catch (Exception)
+                        {
+                            idotartam += ":00"; // Ha nincs mehadva másodperc akkor ne crash
+                            break;
+                        }
+
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        CenterEngine.CenterLine("Hibás formátum! Az időtartamot a következő formátumba adja meg: óó:pp:mm");
+                    }
+                }
             }
 
             string maxpulzus = CenterEngine.ReadCentered("Maximális Pulzus: ");
