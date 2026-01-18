@@ -154,11 +154,11 @@ namespace FutoversenyApp.Models
         {
             dispAsc = !dispAsc;
 
-            Console.SetCursorPosition(85, 15);
+            Console.SetCursorPosition(95, 15);
 
             Console.WriteLine("Növekvő sorrend");
 
-            Console.SetCursorPosition(85, 16);
+            Console.SetCursorPosition(95, 16);
             Console.WriteLine((dispAsc ? "true" : "false"));
         }
 
@@ -167,14 +167,14 @@ namespace FutoversenyApp.Models
             Console.SetCursorPosition(0, 15);
             Console.Write(' ');
 
-            Console.SetCursorPosition(70, 14);
+            Console.SetCursorPosition(80, 14);
             Console.WriteLine("=== Szortírozás beállítások ===");
 
             string[] menuPontok = { "Dátum", "Távolság", "Időtartam", "Maximum BPM" };
 
             for (int i = 0; i < menuPontok.Length; i++)
             {
-                Console.SetCursorPosition(71, 15 + i);
+                Console.SetCursorPosition(81, 15 + i);
 
                 if (cursor == i)
                 {
