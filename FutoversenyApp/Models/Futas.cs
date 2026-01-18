@@ -150,12 +150,31 @@ namespace FutoversenyApp.Models
         /// <summary>
         /// Megnézi, hogy a felhasználó elérte-e a célidejét
         /// </summary>
-        /// <returns>True, ha a futás átlagsebessége nagyobb, mint a cél-é; False, ha kisebb</returns>
+        /// <returns>True, ha a futás átlagsebessége nagyobb vagy egyenlő, mint a cél-é; False, ha kisebb</returns>
         public bool CelElerve()
         {
             User user = User.UserJsonReader();
             float celAtlag = 5000f / ((float)user.Celido * 60f) * 3.6f; // méter/másodperc, mivel Celido = perc, majd később vissza km/h-ba
             return this.AtlagSebesseg() >= Math.Round(celAtlag,1);
         }
+
+        /// <summary>
+        /// Megszámolja hányszor érte el a felhasználó a célját
+        /// </summary>
+        /// <param name="futasok">A lista ami tárolja a futásokat</param>
+        /// <returns>A sikerek elérésének számát</returns>
+        public static int SikerSzamlalo(List<Futas> futasok)
+        {
+            int siker = 0;
+            foreach (Futas futas in futasok)
+            {
+                if (futas.CelElerve())
+                {
+                    siker++;
+                }
+            }
+            return siker;
+        }
+
     }
 }
