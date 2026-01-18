@@ -12,11 +12,12 @@ namespace FutoversenyApp.Models
         private string idotartam;
         private int maxpulzus;
 
+        #region Konstruktorok
         public Futas(string datum, string tavolsag, string idotartam, string maxpulzus)
         {
             User user = User.UserJsonReader();
-            Tomeg = user.Tomeg;
-            Nyugpul = user.Nyugpul;
+            this.Tomeg = user.Tomeg;
+            this.Nyugpul = user.Nyugpul;
 
             Datum = DateTime.Parse(datum);
             Tavolsag = int.Parse(tavolsag);
@@ -27,8 +28,9 @@ namespace FutoversenyApp.Models
         public Futas(string[] futas)
         {
             User user = User.UserJsonReader();
-            Tomeg = user.Tomeg;
-            Nyugpul = user.Nyugpul;
+            this.Tomeg = user.Tomeg;
+            this.Nyugpul = user.Nyugpul;
+
             Datum = DateTime.Parse(futas[0]);
             Tavolsag = int.Parse(futas[1]);
             Idotartam = futas[2];
@@ -39,14 +41,67 @@ namespace FutoversenyApp.Models
         {
 
         }
+        #endregion
 
-        public DateTime Datum { get { return datum; } set { if (value <= DateTime.Now) datum = value; } }
-        public int Tavolsag { get { return tavolsag; } set { if (value > 0) tavolsag = value; } }
-        public string Idotartam { get => idotartam; set => idotartam = value; }
-        public int Tomeg { get; set; }
-        public int Nyugpul { get; set; }
-        public int Maxpulzus { get { return maxpulzus; } set { if (value > Nyugpul) maxpulzus = value; else maxpulzus = Nyugpul; } }
+        #region Property
+        public DateTime Datum 
+        { 
+            get 
+            { 
+                return datum; 
+            } 
 
+            set 
+            { 
+                if (value <= DateTime.Now) 
+                    datum = value; 
+
+                else datum = DateTime.Now ; 
+            } 
+        }
+        public int Tavolsag 
+        { 
+            get 
+            { 
+                return tavolsag; 
+            } 
+
+            set { 
+                if (value > 0)
+                    tavolsag = value; 
+            } 
+        }
+        public string Idotartam 
+        { 
+            get => idotartam; 
+            set => idotartam = value; 
+        }
+        public int Tomeg 
+        { 
+            get; 
+            set; 
+        }
+        public int Nyugpul 
+        { 
+            get; 
+            set;
+        }
+        public int Maxpulzus 
+        { 
+            get 
+            { 
+                return maxpulzus; 
+            } 
+
+            set 
+            { 
+                if (value > Nyugpul) 
+                    maxpulzus = value; 
+                else 
+                    maxpulzus = Nyugpul; 
+            } 
+        }
+        #endregion
 
         public override string ToString()
         {
@@ -99,7 +154,7 @@ namespace FutoversenyApp.Models
         public bool CelElerve()
         {
             User user = User.UserJsonReader();
-            float celAtlag = 5000f / ((float)user.Celido * 60f) * 3.6fs; // méter/másodperc, mivel Celido = perc, majd később vissza km/h-ba
+            float celAtlag = 5000f / ((float)user.Celido * 60f) * 3.6f; // méter/másodperc, mivel Celido = perc, majd később vissza km/h-ba
             return this.AtlagSebesseg() >= Math.Round(celAtlag,1);
         }
     }

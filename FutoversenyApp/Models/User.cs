@@ -15,6 +15,7 @@ namespace FutoversenyApp.Models
         private DateTime szuldat;
         [JsonInclude] public List<string[]> szemelyHistory;
 
+        #region Konstruktorok
         public User(string magassag, string tomeg, string nyugpul, string celido, string szuldat)
         {
             Magassag = int.Parse(magassag);
@@ -39,12 +40,70 @@ namespace FutoversenyApp.Models
         {
             
         }
+        #endregion
 
-        public int Magassag { get { return magassag; } set { if (value > 0) magassag = value; } }
-        public int Tomeg { get { return tomeg; } set { if (value > 0) tomeg = value; } }
-        public int Nyugpul { get { return nyugpul; } set { if (value > 0) nyugpul = value; } }
-        public int Celido { get { return celido; } set { if (value > 0) celido = value; } }
-        public DateTime Szuldat { get { return szuldat; } set { if (value < DateTime.Now) szuldat = value; } }
+        #region Property
+        public int Magassag 
+        { 
+            get 
+            { 
+                return magassag; 
+            } 
+            set 
+            { 
+                if (value > 0) 
+                    magassag = value;
+            } 
+        }
+        public int Tomeg 
+        { 
+            get 
+            { 
+                return tomeg; 
+            } 
+            set 
+            { 
+                if (value > 0) 
+                    tomeg = value; 
+            } 
+        }
+        public int Nyugpul 
+        { 
+            get
+            { 
+                return nyugpul; 
+            } 
+            set 
+            { 
+                if (value > 0) 
+                    nyugpul = value; 
+            } 
+        }
+        public int Celido 
+        { 
+            get 
+            { 
+                return celido; 
+            } 
+            set 
+            { 
+                if (value > 0) 
+                    celido = value; 
+            } 
+        }
+        public DateTime Szuldat 
+        {
+            get 
+            { 
+                return szuldat; 
+            } 
+            set 
+            { 
+                if (value < DateTime.Now) 
+                    szuldat = value; 
+            } 
+        }
+        #endregion
 
         public override string ToString()
         {
@@ -77,6 +136,12 @@ namespace FutoversenyApp.Models
             File.WriteAllText("User.json", json);
         }
 
+        /// <summary>
+        /// Létrehoz egy mentést a Tömegről és a Nyugalmi pulzusról, ellátja a mentés időpontjával, majd hozzáadja egy listához
+        /// </summary>
+        /// <remarks>
+        /// Mivel a lista el van látva a [JsonInclude] taggel, így a User.json-be ezeket le is fogja menteni
+        /// </remarks>
         public void InitializeSzemelyHistory()
         {
             if (szemelyHistory == null)
