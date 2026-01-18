@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 
 //TESZTELÉSHEZ:
@@ -315,6 +316,106 @@ namespace FutoversenyApp.Models
             {
                 Console.SetCursorPosition(75, i);
                 Console.Write("||");
+            }
+        }
+
+        public void DisplayWABPM(User user, int fromThisPos, int cursor, int until)
+        {
+            Console.Clear();
+
+            List<string> userData = user.SzemelyHistory;
+
+            for (int i = fromThisPos; i < until; i++)
+            {
+                if (cursor == i - fromThisPos)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
+
+                Console.WriteLine($"{userData[i][0]} - {userData[i][1]}kg\t{userData[i][2]}BPM");
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor= ConsoleColor.Black;
+            }
+
+            //Console.WriteLine($"{cursor}\n{fromThisPos} -> {until}");
+        }
+
+        public void DisplayWeightAndBPMChangeMenu(User user)
+        {
+            int wabpmCursor = 0;
+            int start = 0;
+            int until = start + 10;
+            int hossz = user.SzemelyHistory.Count;
+
+            DisplayWABPM(user, start, wabpmCursor, until);
+
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            Console.WriteLine($"\n{hossz - (until)} további");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            ConsoleKeyInfo key = Console.ReadKey();
+
+            while (true)
+            {
+                switch (key.Key)
+                {
+                    case ConsoleKey.DownArrow:
+                        wabpmCursor++;
+                        //Console.WriteLine("le");
+                        if (wabpmCursor > 9) {
+                            wabpmCursor = 9;
+
+                            if(start + 10 <= hossz-1)
+                            {
+                                start++;
+                                until = start + 10;
+                            }                            
+                        }
+                        
+                        break;
+
+                    case ConsoleKey.UpArrow:
+                        wabpmCursor--;
+                        //Console.WriteLine("fel");
+                        if (wabpmCursor < 0){ 
+                            wabpmCursor = 0;
+
+                            start--;
+                            until = start + 10;                    
+                        }
+
+                        break;
+
+                    case ConsoleKey.Escape:
+                        GetDisplayInput();
+                        break;
+                }
+
+                if (start < 0) {
+                    start = 0;
+                    until = start + 10;        
+                }
+                if (until > hossz) until = hossz;
+                DisplayWABPM(user, start, wabpmCursor, until);
+
+                if (hossz - until > 0)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine($"\n{hossz - (until)} további");
+
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                }                
+                //Console.WriteLine(sortMenuCursor);
+                key = Console.ReadKey();
             }
         }
     }

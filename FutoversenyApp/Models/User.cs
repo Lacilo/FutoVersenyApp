@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
@@ -11,6 +12,7 @@ namespace FutoversenyApp.Models
         private int nyugpul;
         private int celido;
         private DateTime szuldat;
+
 
         public User(string magassag, string tomeg, string nyugpul, string celido, string szuldat)
         {

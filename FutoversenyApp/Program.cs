@@ -105,6 +105,7 @@ namespace FutoversenyApp
                     Controller.Edzes(futasok);
                     break;
                 case 2:
+                    display.DisplayWeightAndBPMChangeMenu(new User());
                     display.UpdateFutasok(futasok);
                     display.DisplayFutasok(0);
                     display.GetDisplayInput();
