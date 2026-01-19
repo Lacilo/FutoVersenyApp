@@ -400,7 +400,7 @@ namespace FutoversenyApp.Models
                         break;
 
                     case ConsoleKey.Escape:
-                        GetDisplayInput();
+                        Program.Menu();
                         break;
                 }
 
