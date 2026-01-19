@@ -88,16 +88,16 @@ namespace FutoversenyApp.Controllers
             Console.BackgroundColor = Program.background;
             Console.ForegroundColor = Program.textcolor;
 
-            string datum = CenterEngine.ReadCentered("Dátum: ");
+            string datum = CenterEngine.ReadCenteredC("Dátum: ");
             if (datum == "")
             {
                 datum = DateTime.Now.ToString();
             }
-            string tavolsag = CenterEngine.ReadCentered("Távolság (m): ");
+            string tavolsag = CenterEngine.ReadCenteredC("Távolság (m): ");
             string idotartam;
             while (true)
             {
-                idotartam = CenterEngine.ReadCentered("Időtartam (óó:pp:mm): ");
+                idotartam = CenterEngine.ReadCenteredC("Időtartam (óó:pp:mm): ");
                 try
                 {
                     int teszt = int.Parse(idotartam.Split(':')[1]) * 1; // Teszt instrukció hogy legyen ami errort ad
@@ -119,7 +119,7 @@ namespace FutoversenyApp.Controllers
                     CenterEngine.CenterLine("Hibás formátum! Az időtartamot a következő formátumba adja meg: óó:pp:mm");
                 }
             }
-            string maxpulzus = CenterEngine.ReadCentered("Maximális Pulzus: ");
+            string maxpulzus = CenterEngine.ReadCenteredC("Maximális Pulzus: ");
 
             Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
             futasok.Add(ujFutas);

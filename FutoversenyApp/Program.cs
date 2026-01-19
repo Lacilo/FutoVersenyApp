@@ -264,15 +264,15 @@ namespace FutoversenyApp
                     background = ConsoleColor.Black;
                     textcolor = ConsoleColor.Red;
                     highlight = ConsoleColor.Green;
-                    highlightText = ConsoleColor.White;
+                    highlightText = ConsoleColor.Black;
                     Console.BackgroundColor = background;
                     Console.ForegroundColor = textcolor;
                     Settings(4);
                     break;
                 case 3:
-                    background = ConsoleColor.Green;
-                    textcolor = ConsoleColor.Red;
-                    highlight = ConsoleColor.Black;
+                    background = ConsoleColor.DarkBlue;
+                    textcolor = ConsoleColor.White;
+                    highlight = ConsoleColor.Blue;
                     highlightText = ConsoleColor.White;
                     Console.BackgroundColor = background;
                     Console.ForegroundColor = textcolor;

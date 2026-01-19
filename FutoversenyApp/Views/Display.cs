@@ -71,7 +71,7 @@ namespace FutoversenyApp.Models
             Console.WriteLine($"\n   Oldal: {page + 1} / {allPage} | Jelenlegi elem: {currentDisplay + 1}   ");
             Console.BackgroundColor = Program.background;
             Console.ForegroundColor = Program.textcolor;
-            Console.WriteLine("Szerkesztés: e\t Törlés: Delete\nLétrehozás: c\t Szortírozás beállítások: s");
+            Console.WriteLine("Szerkesztés: E\t Törlés: Delete\nLétrehozás: C\t Szortírozás beállítások: S");
             DisplaySeparator();
 
             ConsoleKeyInfo key = Console.ReadKey();                
@@ -124,7 +124,7 @@ namespace FutoversenyApp.Models
                         break;
 
                     case ConsoleKey.C:
-                        // Létrehozás függvény meghívása
+                        Controller.Edzes(futasok);
                         break;
 
                     case ConsoleKey.S:
@@ -185,14 +185,14 @@ namespace FutoversenyApp.Models
 
                 if (cursor == i)
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = Program.highlight;
+                    Console.ForegroundColor = Program.highlightText;
                 }
 
                 Console.WriteLine("- " + menuPontok[i]);
 
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = Program.background;
+                Console.ForegroundColor = Program.textcolor;
             }
         }
 
@@ -329,14 +329,14 @@ namespace FutoversenyApp.Models
             {
                 if (cursor == i - fromThisPos)
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = Program.highlight;
+                    Console.ForegroundColor = Program.highlightText;
                 }
 
                 Console.WriteLine($"{userData[i][0]} - {userData[i][1]}kg\t{userData[i][2]}BPM");
 
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.BackgroundColor= ConsoleColor.Black;
+                Console.ForegroundColor = Program.textcolor;
+                Console.BackgroundColor= Program.background;
             }
 
             //Console.WriteLine($"{cursor}\n{fromThisPos} -> {until}\n{user.szemelyHistory.Count - until}");
@@ -353,13 +353,13 @@ namespace FutoversenyApp.Models
 
             if (hossz - until > 0)
             {
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = Program.highlight;
+                Console.ForegroundColor = Program.highlightText;
 
                 Console.WriteLine($"\n{hossz - until} további");
 
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = Program.background;
+                Console.ForegroundColor = Program.textcolor;
             }
 
             ConsoleKeyInfo key = Console.ReadKey();
@@ -413,13 +413,13 @@ namespace FutoversenyApp.Models
 
                 if (hossz - until > 0)
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = Program.highlight;
+                    Console.ForegroundColor = Program.highlightText;
 
                     Console.WriteLine($"\n{hossz - (until)} további");
 
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = Program.background;
+                    Console.ForegroundColor = Program.textcolor;
                 }                
                 //Console.WriteLine(sortMenuCursor);
                 key = Console.ReadKey();
