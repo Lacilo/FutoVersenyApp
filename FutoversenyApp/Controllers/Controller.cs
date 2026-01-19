@@ -245,6 +245,18 @@ namespace FutoversenyApp.Controllers
             return min;
         }
 
+        public static int MegtettOssztav(List<Futas> futasok)
+        {
+            int ossztav = 0;
+
+            foreach (Futas futas in futasok)
+            {
+                ossztav += futas.Tavolsag;
+            }
+
+            return ossztav;
+        }
+
         public static Futas Max(List<Futas> futasok, char mode)
         {
             Futas max = futasok[0];
