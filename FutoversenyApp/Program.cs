@@ -58,6 +58,7 @@ namespace FutoversenyApp
                 $"Személyes Adatok {megadvat}",
                 "Edzés Rögzítése",
                 "Edzések Kezelése",
+                "Súly és Pulzus Változás",
                 "Beállítások",
                 "Kilépés"
             };
@@ -107,15 +108,17 @@ namespace FutoversenyApp
                     Controller.Edzes(futasok);
                     break;
                 case 2:
-                    display.DisplayWeightAndBPMChangeMenu(user);
                     display.UpdateFutasok(futasok);
                     display.DisplayFutasok(0);
                     display.GetDisplayInput();
                     break;
                 case 3:
-                    Settings();
+                    display.DisplayWeightAndBPMChangeMenu(user);
                     break;
                 case 4:
+                    Settings(0);
+                    break;
+                case 5:
                     Exit();
                     break;
             }
@@ -194,7 +197,7 @@ namespace FutoversenyApp
             Console.ResetColor();
         }
 
-        static void Settings() 
+        static void Settings(int selected) 
         {
             Console.BackgroundColor = background;
             Console.Clear();
@@ -205,13 +208,11 @@ namespace FutoversenyApp
             string[] items =
             {
                 "Fekete-Fehér (default)",
-                "Cián-Piros",
-                "1",
-                "2",
+                "Fehér-Fekete",
+                "Fekete-Piros-Zöld",
+                "Piros-Zöld",
                 "Főmenü"
             };
-
-            int selected = 0;
 
             while (true)
             {
@@ -248,34 +249,34 @@ namespace FutoversenyApp
                     highlightText = ConsoleColor.Black;
                     Console.BackgroundColor = background;
                     Console.ForegroundColor = textcolor;
-                    Settings();
+                    Settings(4);
                     break;
                 case 1:
-                    background = ConsoleColor.Cyan;
+                    background = ConsoleColor.White;
                     textcolor = ConsoleColor.Black;
-                    highlight = ConsoleColor.Red;
+                    highlight = ConsoleColor.Black;
                     highlightText = ConsoleColor.White;
                     Console.BackgroundColor = background;
                     Console.ForegroundColor = textcolor;
-                    Settings();
+                    Settings(4);
                     break;
                 case 2:
                     background = ConsoleColor.Black;
-                    textcolor = ConsoleColor.White;
-                    highlight = ConsoleColor.White;
-                    highlightText = ConsoleColor.Black;
+                    textcolor = ConsoleColor.Red;
+                    highlight = ConsoleColor.Green;
+                    highlightText = ConsoleColor.White;
                     Console.BackgroundColor = background;
                     Console.ForegroundColor = textcolor;
-                    Settings();
+                    Settings(4);
                     break;
                 case 3:
-                    background = ConsoleColor.Black;
-                    textcolor = ConsoleColor.White;
-                    highlight = ConsoleColor.White;
-                    highlightText = ConsoleColor.Black;
+                    background = ConsoleColor.Green;
+                    textcolor = ConsoleColor.Red;
+                    highlight = ConsoleColor.Black;
+                    highlightText = ConsoleColor.White;
                     Console.BackgroundColor = background;
                     Console.ForegroundColor = textcolor;
-                    Settings();
+                    Settings(4);
                     break;
                 case 4:
                     Main();
