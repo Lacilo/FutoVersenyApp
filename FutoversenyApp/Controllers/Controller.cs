@@ -88,11 +88,29 @@ namespace FutoversenyApp.Controllers
             Console.BackgroundColor = Program.background;
             Console.ForegroundColor = Program.textcolor;
 
-            string datum = CenterEngine.ReadCenteredC("Dátum: ");
-            if (datum == "")
+            string datum;
+            while (true)
             {
-                datum = DateTime.Now.ToString();
+                datum = CenterEngine.ReadCenteredC("Dátum: ");
+                if (datum == "")
+                {
+                    datum = DateTime.Now.ToString();
+                    break;
+                }
+                else
+                {
+                    try
+                    {
+                        DateTime.Parse(datum);
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        CenterEngine.CenterLine("Érvénytelen formátum! A helyes formátum: ÉÉÉÉ.HH.NN");
+                    }
+                }
             }
+
             string tavolsag = CenterEngine.ReadCenteredC("Távolság (m): ");
             string idotartam;
             while (true)
@@ -133,10 +151,27 @@ namespace FutoversenyApp.Controllers
         /// </summary>
         public static void Szerkesztes(List<Futas> futasok, int kivalasztott)
         {
-            string datum = CenterEngine.ReadCentered("Dátum: ");
-            if (datum == "")
+            string datum;
+            while (true)
             {
-                datum = futasok[kivalasztott].Datum.ToString();
+                datum = CenterEngine.ReadCenteredC("Dátum: ");
+                if (datum == "")
+                {
+                    datum = DateTime.Now.ToString();
+                    break;
+                }
+                else
+                {
+                    try
+                    {
+                        DateTime.Parse(datum);
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        CenterEngine.CenterLine("Érvénytelen formátum! A helyes formátum: ÉÉÉÉ.HH.NN");
+                    }
+                }
             }
 
             string tavolsag = CenterEngine.ReadCentered("Távolság (m): ");
