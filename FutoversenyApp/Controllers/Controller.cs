@@ -15,7 +15,20 @@ namespace FutoversenyApp.Controllers
             Console.ForegroundColor = Program.textcolor;
 
 
-            string magassag = CenterEngine.ReadCentered("Magasság (cm): ");
+            string magassag;
+            while (true)
+            {
+                magassag = CenterEngine.ReadCentered("Magasság (cm): ");
+                try
+                {
+                    int.Parse(magassag);
+                    break;
+                }
+                catch (Exception)
+                {
+
+                }
+            }
             string tomeg = CenterEngine.ReadCentered("Tömeg (kg): ");
             string nyugpul = CenterEngine.ReadCentered("Nyugalmi Pulzus: ");
             string celido = CenterEngine.ReadCentered("Célidő (perc): ");
@@ -40,31 +53,134 @@ namespace FutoversenyApp.Controllers
 
             User user = User.UserJsonReader();
 
-            string magassag = CenterEngine.ReadCentered($"Magasság ({user.Magassag}cm): ");
-            if (magassag == "")
+            string magassag;
+            while (true)
             {
-                magassag = user.Magassag.ToString();
+                magassag = CenterEngine.ReadCentered($"Magasság ({user.Magassag}cm): ");
+                if (magassag == "")
+                {
+                    magassag = user.Magassag.ToString();
+                    break;
+                }
+                else
+                {
+                    try
+                    {
+                        double.Parse(magassag);
+                        break;
+                    }
+                    catch
+                    {
+                        CenterEngine.CenterLine("Érvénytelen magasság! Kérlek számot adj meg! ");
+                    }
+                }
             }
-            string tomeg = CenterEngine.ReadCentered($"Tömeg ({user.Tomeg}kg): ");
-            if (tomeg == "")
+
+            string tomeg;
+            while (true) 
             {
-                tomeg = user.Tomeg.ToString();
+                tomeg = CenterEngine.ReadCentered($"Tömeg ({user.Tomeg}kg): ");
+                if (tomeg == "")
+                {
+                    tomeg = user.Tomeg.ToString();
+                    break;
+                }
+                else
+                {
+                    while (true)
+                    {
+                        try
+                        {
+                            double.Parse(tomeg);
+                            break;
+                        }
+                        catch
+                        {
+                            CenterEngine.CenterLine("Érvénytelen tömeg! Kérlek számot adj meg! ");
+                        }
+                    }
+                }
             }
-            string nyugpul = CenterEngine.ReadCentered($"Nyugalmi Pulzus ({user.Nyugpul}): ");
-            if (nyugpul == "")
+
+            string nyugpul;
+            while (true)
             {
-                nyugpul = user.Nyugpul.ToString();
+                nyugpul = CenterEngine.ReadCentered($"Nyugalmi Pulzus ({user.Nyugpul}): ");
+                if (nyugpul == "")
+                {
+                    nyugpul = user.Nyugpul.ToString();
+                    break;
+                }
+                else
+                {
+                    while (true)
+                    {
+                        try
+                        {
+                            int.Parse(nyugpul);
+                            break;
+                        }
+                        catch
+                        {
+                            CenterEngine.CenterLine("Érvénytelen pulzus! Kérlek egész számot adj meg! ");
+                        }
+                    }
+                } 
             }
-            string celido = CenterEngine.ReadCentered($"Célidő ({user.Celido}perc): ");
-            if (celido == "")
+
+
+            string celido;
+            while (true)
             {
-                celido = user.Celido.ToString();
+                celido = CenterEngine.ReadCentered($"Célidő ({user.Celido}perc): ");
+                if (celido == "")
+                {
+                    celido = user.Celido.ToString();
+                    break;
+                }
+                else
+                {
+                    while (true)
+                    {
+                        try
+                        {
+                            double.Parse(celido);
+                            break;
+                        }
+                        catch
+                        {
+                            CenterEngine.CenterLine("Érvénytelen idő! Kérlek számot adj meg! ");
+                        }
+                    }
+                }
             }
-            string szuldat = CenterEngine.ReadCentered($"Születési Dátum ({user.Szuldat}): ");
-            if (szuldat == "")
+
+            string szuldat;
+            while (true)
             {
-                szuldat = user.Szuldat.ToString();
+                szuldat = CenterEngine.ReadCentered($"Születési Dátum ({user.Szuldat}): ");
+                if (szuldat == "")
+                {
+                    szuldat = user.Szuldat.ToString();
+                    break;
+                }
+                else
+                {
+                    while (true)
+                    {
+                        try
+                        {
+                            DateTime.Parse(szuldat);
+                            break;
+                        }
+                        catch
+                        {
+                            CenterEngine.CenterLine("Érvénytelen dátum! (ÉÉÉÉ.MM.DD) ");
+                        }
+                    }
+                }
             }
+
             // User ujUser = new User(magassag, tomeg, nyugpul, celido, szuldat);
             // User.JsonWriter(ujUser);
 
