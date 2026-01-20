@@ -278,7 +278,7 @@ namespace FutoversenyApp.Models
                         Console.Write("    ");
                     }
 
-                    Console.WriteLine($"{Futasok[i].Datum}\t{Futasok[i].Tavolsag} méter\t{Futasok[i].Idotartam} óra\t{Futasok[i].Maxpulzus} bpm ");
+                    Console.WriteLine($"{Futasok[i].Datum}    {Futasok[i].Tavolsag} méter    {Futasok[i].Idotartam} óra    {Futasok[i].Maxpulzus} bpm ");
                 }
             }
             else
@@ -336,7 +336,7 @@ namespace FutoversenyApp.Models
                     Console.ForegroundColor = Program.highlightText;
                 }
 
-                Console.WriteLine($"{userData[i][0]} - {userData[i][1]}kg\t{userData[i][2]}BPM");
+                Console.WriteLine($"{userData[i][0]} - {userData[i][1]}kg    {userData[i][2]}BPM");
 
                 Console.ForegroundColor = Program.textcolor;
                 Console.BackgroundColor= Program.background;

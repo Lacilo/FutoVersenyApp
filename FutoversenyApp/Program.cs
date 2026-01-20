@@ -117,7 +117,11 @@ namespace FutoversenyApp
                     display.DisplayWeightAndBPMChangeMenu(user);
                     break;
                 case 4:
-                    //egyéb adatok
+                    Console.Clear();
+                    Console.WriteLine("Megtett össztáv: " + Controller.MegtettOssztav(futasok) + " m");
+                    Console.WriteLine("\nEnterrel vissza a főmenübe");
+                    Console.ReadKey();
+                    Menu();
                     break;
                 case 5:
                     Settings(0);
