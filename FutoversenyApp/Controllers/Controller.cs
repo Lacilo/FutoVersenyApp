@@ -111,7 +111,21 @@ namespace FutoversenyApp.Controllers
                 }
             }
 
-            string tavolsag = CenterEngine.ReadCenteredC("Távolság (m): ");
+            string tavolsag;
+            while (true)
+            {
+                tavolsag = CenterEngine.ReadCenteredC("Távolság (m): ");
+                try
+                {
+                    int.Parse(tavolsag);
+                    break;
+                }
+                catch (Exception)
+                {
+                    CenterEngine.CenterLine("Ide számot kell írni! ");
+                }
+            }
+
             string idotartam;
             while (true)
             {
@@ -137,7 +151,21 @@ namespace FutoversenyApp.Controllers
                     CenterEngine.CenterLine("Hibás formátum! Az időtartamot a következő formátumba adja meg: óó:pp:mm");
                 }
             }
-            string maxpulzus = CenterEngine.ReadCenteredC("Maximális Pulzus: ");
+
+            string maxpulzus;
+            while (true)
+            {
+                maxpulzus = CenterEngine.ReadCenteredC("Maximális Pulzus: ");
+                try
+                {
+                    int.Parse(maxpulzus);
+                    break;
+                }
+                catch (Exception)
+                {
+                    CenterEngine.CenterLine("Ide számot kell írni! ");
+                }
+            }
 
             Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
             futasok.Add(ujFutas);
@@ -157,7 +185,7 @@ namespace FutoversenyApp.Controllers
                 datum = CenterEngine.ReadCenteredC("Dátum: ");
                 if (datum == "")
                 {
-                    datum = DateTime.Now.ToString();
+                    datum = futasok[kivalasztott].Datum.ToString();
                     break;
                 }
                 else
@@ -174,10 +202,27 @@ namespace FutoversenyApp.Controllers
                 }
             }
 
-            string tavolsag = CenterEngine.ReadCentered("Távolság (m): ");
-            if (tavolsag == "")
+            string tavolsag;
+            while (true)
             {
-                tavolsag = futasok[kivalasztott].Tavolsag.ToString();
+                tavolsag = CenterEngine.ReadCentered("Távolság (m): ");
+                if (tavolsag == "")
+                {
+                    tavolsag = futasok[kivalasztott].Tavolsag.ToString();
+                    break;
+                }
+                else
+                {
+                    try
+                    {
+                        int.Parse(tavolsag);
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        CenterEngine.CenterLine("Ide számot kell írni! ");
+                    }
+                }
             }
 
             string idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
@@ -212,10 +257,27 @@ namespace FutoversenyApp.Controllers
                 }
             }
 
-            string maxpulzus = CenterEngine.ReadCentered("Maximális Pulzus: ");
-            if (maxpulzus == "")
+            string maxpulzus;
+            while (true)
             {
-                maxpulzus = futasok[kivalasztott].Maxpulzus.ToString();
+                maxpulzus = CenterEngine.ReadCentered("Maximális Pulzus: ");
+                if (maxpulzus == "")
+                {
+                    maxpulzus = futasok[kivalasztott].Maxpulzus.ToString();
+                    break;
+                }
+                else
+                {
+                    try
+                    {
+                        int.Parse(maxpulzus);
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        CenterEngine.CenterLine("Ide számot kell írni! ");
+                    }
+                }
             }
 
             // Futas ujFutas = new Futas(datum, tavolsag, idotartam, maxpulzus);
