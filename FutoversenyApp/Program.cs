@@ -59,6 +59,7 @@ namespace FutoversenyApp
                 "Edzés Rögzítése",
                 "Edzések Kezelése",
                 "Súly és Pulzus Változás",
+                "Egyéb Adatok",
                 "Beállítások",
                 "Kilépés"
             };
@@ -116,9 +117,12 @@ namespace FutoversenyApp
                     display.DisplayWeightAndBPMChangeMenu(user);
                     break;
                 case 4:
-                    Settings(0);
+                    //egyéb adatok
                     break;
                 case 5:
+                    Settings(0);
+                    break;
+                case 6:
                     Exit();
                     break;
             }
