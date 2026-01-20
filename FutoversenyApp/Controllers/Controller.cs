@@ -234,6 +234,7 @@ namespace FutoversenyApp.Controllers
             {
                 while (true)
                 {
+                    idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
                     try
                     {
                         int teszt = int.Parse(idotartam.Split(':')[1]) * 1; // Teszt instrukció hogy legyen ami errort ad
