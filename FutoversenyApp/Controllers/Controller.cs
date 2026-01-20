@@ -21,21 +21,84 @@ namespace FutoversenyApp.Controllers
                 magassag = CenterEngine.ReadCentered("Magasság (cm): ");
                 try
                 {
-                    int.Parse(magassag);
+                    double.Parse(magassag);
                     break;
                 }
-                catch (Exception)
+                catch
                 {
-
+                    CenterEngine.CenterLine("Érvénytelen magasság! Kérlek számot adj meg! ");
                 }
             }
-            string tomeg = CenterEngine.ReadCentered("Tömeg (kg): ");
-            string nyugpul = CenterEngine.ReadCentered("Nyugalmi Pulzus: ");
-            string celido = CenterEngine.ReadCentered("Célidő (perc): ");
-            string szuldat = CenterEngine.ReadCentered("Születési Dátum (ÉÉÉÉ.HH.NN): ");
-            if (szuldat == "")
+
+            string tomeg;
+            while (true)
             {
-                szuldat = DateTime.Now.ToString();
+                tomeg = CenterEngine.ReadCentered("Tömeg (kg): ");
+                try
+                {
+                    double.Parse(tomeg);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen tömeg! Kérlek számot adj meg! ");
+                }
+            }
+
+            string nyugpul;
+            while (true)
+            {
+                nyugpul = CenterEngine.ReadCentered("Nyugalmi Pulzus: ");
+                try
+                {
+                    int.Parse(nyugpul);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen pulzus! Kérlek egész számot adj meg! ");
+                }
+            }
+            
+            string celido;
+            while (true)
+            {
+                celido = CenterEngine.ReadCentered("Célidő (perc): ");
+                try
+                {
+                    double.Parse(celido);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen idő! Kérlek számot adj meg! ");
+                }
+            }
+
+            string szuldat;
+            while (true)
+            {
+                szuldat = CenterEngine.ReadCentered("Születési Dátum (ÉÉÉÉ.HH.NN): ");
+                if (szuldat == "")
+                {
+                    szuldat = DateTime.Now.ToString();
+                    break;
+                }
+                else
+                {
+                    while (true)
+                    {
+                        try
+                        {
+                            DateTime.Parse(szuldat);
+                            break;
+                        }
+                        catch
+                        {
+                            CenterEngine.CenterLine("Érvénytelen dátum! (ÉÉÉÉ.MM.DD) ");
+                        }
+                    }
+                }
             }
 
             User ujUser = new User(magassag, tomeg, nyugpul, celido, szuldat);
