@@ -84,20 +84,14 @@ namespace FutoversenyApp.Controllers
                     szuldat = DateTime.Now.ToString();
                     break;
                 }
-                else
+                try
                 {
-                    while (true)
-                    {
-                        try
-                        {
-                            DateTime.Parse(szuldat);
-                            break;
-                        }
-                        catch
-                        {
-                            CenterEngine.CenterLine("Érvénytelen dátum! (ÉÉÉÉ.MM.DD) ");
-                        }
-                    }
+                    DateTime.Parse(szuldat);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen dátum! (ÉÉÉÉ.MM.DD) ");
                 }
             }
 
@@ -125,22 +119,20 @@ namespace FutoversenyApp.Controllers
                     magassag = user.Magassag.ToString();
                     break;
                 }
-                else
+                try
                 {
-                    try
-                    {
-                        double.Parse(magassag);
-                        break;
-                    }
-                    catch
-                    {
-                        CenterEngine.CenterLine("Érvénytelen magasság! Kérlek számot adj meg! ");
-                    }
+                    double.Parse(magassag);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen magasság! Kérlek számot adj meg! ");
                 }
             }
+            
 
             string tomeg;
-            while (true) 
+            while (true)
             {
                 tomeg = CenterEngine.ReadCentered($"Tömeg ({user.Tomeg}kg): ");
                 if (tomeg == "")
@@ -148,20 +140,14 @@ namespace FutoversenyApp.Controllers
                     tomeg = user.Tomeg.ToString();
                     break;
                 }
-                else
+                try
                 {
-                    while (true)
-                    {
-                        try
-                        {
-                            double.Parse(tomeg);
-                            break;
-                        }
-                        catch
-                        {
-                            CenterEngine.CenterLine("Érvénytelen tömeg! Kérlek számot adj meg! ");
-                        }
-                    }
+                    double.Parse(tomeg);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen tömeg! Kérlek számot adj meg! ");
                 }
             }
 
@@ -174,23 +160,16 @@ namespace FutoversenyApp.Controllers
                     nyugpul = user.Nyugpul.ToString();
                     break;
                 }
-                else
+                try
                 {
-                    while (true)
-                    {
-                        try
-                        {
-                            int.Parse(nyugpul);
-                            break;
-                        }
-                        catch
-                        {
-                            CenterEngine.CenterLine("Érvénytelen pulzus! Kérlek egész számot adj meg! ");
-                        }
-                    }
-                } 
+                    int.Parse(nyugpul);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen pulzus! Kérlek egész számot adj meg! ");
+                }
             }
-
 
             string celido;
             while (true)
@@ -201,20 +180,14 @@ namespace FutoversenyApp.Controllers
                     celido = user.Celido.ToString();
                     break;
                 }
-                else
+                try
                 {
-                    while (true)
-                    {
-                        try
-                        {
-                            double.Parse(celido);
-                            break;
-                        }
-                        catch
-                        {
-                            CenterEngine.CenterLine("Érvénytelen idő! Kérlek számot adj meg! ");
-                        }
-                    }
+                    double.Parse(celido);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen idő! Kérlek számot adj meg! ");
                 }
             }
 
@@ -227,20 +200,14 @@ namespace FutoversenyApp.Controllers
                     szuldat = user.Szuldat.ToString();
                     break;
                 }
-                else
+                try
                 {
-                    while (true)
-                    {
-                        try
-                        {
-                            DateTime.Parse(szuldat);
-                            break;
-                        }
-                        catch
-                        {
-                            CenterEngine.CenterLine("Érvénytelen dátum! (ÉÉÉÉ.MM.DD) ");
-                        }
-                    }
+                    DateTime.Parse(szuldat);
+                    break;
+                }
+                catch
+                {
+                    CenterEngine.CenterLine("Érvénytelen dátum! (ÉÉÉÉ.MM.DD) ");
                 }
             }
 
