@@ -124,7 +124,7 @@ namespace FutoversenyApp.Models
         /// <summary>
         /// Kiír egy .json fájlt ami tartalmazza a felhasználó személyes adatait
         /// </summary>
-        /// <param name="user">Egy tömb ami tartalmazza felhasználó adatait</param>
+        /// <param name="user">Egy objektum ami tartalmazza felhasználó adatait</param>
         public static void JsonWriter(User user)
         {
             JsonSerializerOptions options = new JsonSerializerOptions
