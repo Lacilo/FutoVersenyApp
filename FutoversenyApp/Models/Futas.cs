@@ -44,62 +44,63 @@ namespace FutoversenyApp.Models
         #endregion
 
         #region Property
-        public DateTime Datum 
-        { 
-            get 
-            { 
-                return datum; 
-            } 
+        public DateTime Datum
+        {
+            get
+            {
+                return datum;
+            }
 
-            set 
-            { 
-                if (value <= DateTime.Now) 
-                    datum = value; 
+            set
+            {
+                if (value <= DateTime.Now)
+                    datum = value;
 
-                else datum = DateTime.Now ; 
-            } 
+                else datum = DateTime.Now;
+            }
         }
-        public int Tavolsag 
-        { 
-            get 
-            { 
-                return tavolsag; 
-            } 
+        public int Tavolsag
+        {
+            get
+            {
+                return tavolsag;
+            }
 
-            set { 
+            set
+            {
                 if (value > 0)
-                    tavolsag = value; 
-            } 
+                    tavolsag = value;
+            }
         }
-        public string Idotartam 
-        { 
-            get => idotartam; 
-            set => idotartam = value; 
+        public string Idotartam
+        {
+            get => idotartam;
+            set => idotartam = value;
         }
-        public int Tomeg 
-        { 
-            get; 
-            set; 
-        }
-        public int Nyugpul 
-        { 
-            get; 
+        public int Tomeg
+        {
+            get;
             set;
         }
-        public int Maxpulzus 
-        { 
-            get 
-            { 
-                return maxpulzus; 
-            } 
+        public int Nyugpul
+        {
+            get;
+            set;
+        }
+        public int Maxpulzus
+        {
+            get
+            {
+                return maxpulzus;
+            }
 
-            set 
-            { 
-                if (value > Nyugpul) 
-                    maxpulzus = value; 
-                else 
-                    maxpulzus = Nyugpul; 
-            } 
+            set
+            {
+                if (value > Nyugpul)
+                    maxpulzus = value;
+                else
+                    maxpulzus = Nyugpul;
+            }
         }
         #endregion
 
@@ -144,7 +145,7 @@ namespace FutoversenyApp.Models
             string[] ido = this.Idotartam.Split(':');
             int timeInSeconds = (int.Parse(ido[0]) * 60 * 60) + (int.Parse(ido[1]) * 60) + int.Parse(ido[2]);
             float atlagsebesseg = ((float)this.Tavolsag / (float)timeInSeconds) * 3.6f;
-            return (float)Math.Round(atlagsebesseg,1); // Kerekítsd hogy ne menjen örökké a kiírás
+            return (float)Math.Round(atlagsebesseg, 1); // Kerekítsd hogy ne menjen örökké a kiírás
         }
 
         /// <summary>
@@ -155,7 +156,7 @@ namespace FutoversenyApp.Models
         {
             User user = User.UserJsonReader();
             float celAtlag = 5000f / ((float)user.Celido * 60f) * 3.6f; // méter/másodperc, mivel Celido = perc, majd később vissza km/h-ba
-            return this.AtlagSebesseg() >= Math.Round(celAtlag,1);
+            return this.AtlagSebesseg() >= Math.Round(celAtlag, 1);
         }
 
         /// <summary>
@@ -203,6 +204,57 @@ namespace FutoversenyApp.Models
             int maradekMp = osszMp % 60;    // Egyenlővé tesszük a maradékkal
 
             return $"{napok:D2}:{maradekOra:D2}:{maradekPerc:D2}:{maradekMp:D2}";
+        }
+
+        /// <summary>
+        /// Kiszámolja az elégetett kalóriák számát átlag sebesség, testsúly és idő alapján
+        /// </summary>
+        /// <returns>Az elégetett kalóriák száma</returns>
+        public double ElegetettKaloria()
+        {
+            double met;
+
+            if (this.AtlagSebesseg() < 4.0)
+            {
+                met = 3.0;
+            }
+            else if (this.AtlagSebesseg() < 5.5)
+            {
+                met = 3.5;
+            }
+            else if (this.AtlagSebesseg() < 6.4)
+            {
+                met = 5.0;
+            }
+            else if (this.AtlagSebesseg() < 8.0)
+            {
+                met = 8.3;
+            }
+            else if (this.AtlagSebesseg() < 9.7)
+            {
+                met = 9.8;
+            }
+            else if (this.AtlagSebesseg() < 11.3)
+            {
+                met = 11.0;
+            }
+            else if (this.AtlagSebesseg() < 12.9)
+            {
+                met = 11.8;
+            }
+            else if (this.AtlagSebesseg() < 16.0)
+            {
+                met = 14.5;
+            }
+            else
+            {
+                met = 16.0;
+            }
+
+            double hosszOra = TimeSpan.Parse(Idotartam).TotalHours;
+            double kcal = met * this.Tomeg * hosszOra;
+
+            return Math.Round(kcal,2);
         }
     }
 }

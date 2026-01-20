@@ -308,6 +308,9 @@ namespace FutoversenyApp.Models
 
             Console.SetCursorPosition(80, 7);
             Console.WriteLine($"Átlagsebesség: {Futasok[currentDisplay].AtlagSebesseg()} km/h");
+
+            Console.SetCursorPosition(80, 8);
+            Console.WriteLine($"Elégetett kalóriák: {Futasok[currentDisplay].ElegetettKaloria()} kcal");
         }
 
         public void DisplaySeparator()
