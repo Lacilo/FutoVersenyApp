@@ -117,7 +117,10 @@ namespace FutoversenyApp
                     display.DisplayWeightAndBPMChangeMenu(user);
                     break;
                 case 4:
+                    Console.BackgroundColor = Program.background;
                     Console.Clear();
+                    Console.BackgroundColor = Program.background;
+                    Console.ForegroundColor = Program.textcolor;
                     Console.WriteLine("Megtett össztáv: " + Controller.MegtettOssztav(futasok) + " m");
                     Console.WriteLine("Sikerek száma: " + Futas.SikerSzamlalo(futasok) + " Ennyiből: " + futasok.Count);
                     Console.WriteLine("Összesített futással töltött idő: " + Futas.Osszido(futasok));
