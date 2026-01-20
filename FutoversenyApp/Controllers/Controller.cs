@@ -321,7 +321,7 @@ namespace FutoversenyApp.Controllers
         }
 
         /// <summary>
-        /// Újra bekéri az edzés adatait, majd új objektumot hoz létre a régi edzés helyén
+        /// Újra bekéri az edzés adatait, majd felülírja az régi adatokat az újjal
         /// </summary>
         public static void Szerkesztes(List<Futas> futasok, int kivalasztott)
         {
