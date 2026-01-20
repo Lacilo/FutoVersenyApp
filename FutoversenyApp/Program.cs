@@ -119,6 +119,8 @@ namespace FutoversenyApp
                 case 4:
                     Console.Clear();
                     Console.WriteLine("Megtett össztáv: " + Controller.MegtettOssztav(futasok) + " m");
+                    Console.WriteLine("Sikerek száma: " + Futas.SikerSzamlalo(futasok) + " Ennyiből: " + futasok.Count);
+                    Console.WriteLine("Összesített futással töltött idő: " + Futas.Osszido(futasok));
                     Console.WriteLine("\nEnterrel vissza a főmenübe");
                     Console.ReadKey();
                     Menu();
