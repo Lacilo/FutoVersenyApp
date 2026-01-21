@@ -1,6 +1,7 @@
 ﻿using FutoversenyApp.Controllers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 
@@ -347,6 +348,17 @@ namespace FutoversenyApp.Models
 
         public void DisplayWeightAndBPMChangeMenu(User user)
         {
+            if (new FileInfo("Runs.json").Length == 2)
+            {
+                Console.Clear();
+                Console.WriteLine("Nincs adat");
+                Console.WriteLine("Enterrel tovább");
+                Console.ReadKey();
+                Program.Main();
+            }
+
+            user = User.UserJsonReader();
+
             int wabpmCursor = 0;
             int start = 0;
             int until = start + 10;

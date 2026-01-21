@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using FutoversenyApp;
 
 namespace FutoversenyApp.Models
 {
@@ -116,9 +117,14 @@ namespace FutoversenyApp.Models
         /// <returns>Egy User objektumot a fájlból</returns>
         public static User UserJsonReader()
         {
+            Program.FilesExist();
             string json = File.ReadAllText("User.json");
-            User user = JsonSerializer.Deserialize<User>(json);
-            return user;
+            if (new FileInfo("User.json").Length > 2)
+            {
+                User user = JsonSerializer.Deserialize<User>(json);
+                return user;
+            }
+            return null;
         }
 
         /// <summary>

@@ -42,7 +42,7 @@ namespace FutoversenyApp
         {
             // ha létezik a User.json fájl, akkor a menüben jelezze, hogy meg van adva a személyes adat
             bool megadva = false;
-            if (new FileInfo("User.json").Length > 0)
+            if (new FileInfo("User.json").Length > 2)
             {
                 megadva = true;
             }
@@ -297,15 +297,15 @@ namespace FutoversenyApp
         /// <summary>
         /// Megnézi hogy léteznek-e a kellő fájlok, létrehozza ha nem.
         /// </summary>
-        static void FilesExist()
+        public static void FilesExist()
         {
             if (!File.Exists("Runs.json") || new FileInfo("Runs.json").Length == 0)
             {
                 File.WriteAllText("Runs.json", "[]");
             }
-            if (!File.Exists("User.json"))
+            if (!File.Exists("User.json") || new FileInfo("User.json").Length == 0)
             {
-                File.Create("User.json").Close();
+                File.WriteAllText("User.json", "[]");
             }
         }
     }
