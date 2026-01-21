@@ -86,7 +86,6 @@ namespace FutoversenyApp.Models
                         {
                             posOnPage = 9;
                         }
-                        Console.WriteLine($"{allPage + 1} / {page + 1}");
                         if((allPage + 1) / (page + 1) == 1 && Futasok.Count - page * 10 <= posOnPage)
                         {
                             posOnPage--;
