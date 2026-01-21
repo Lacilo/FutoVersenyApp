@@ -7,6 +7,9 @@ namespace FutoversenyApp.Controllers
 {
     internal class Controller
     {
+        /// <summary>
+        /// Bekéri a felhasználó adatait
+        /// </summary>
         public static void SzAdatok()
         {
             Console.BackgroundColor = Program.background;
@@ -101,6 +104,9 @@ namespace FutoversenyApp.Controllers
             Program.Main();
         }
 
+        /// <summary>
+        /// Újra bekéri a felhasználó adatait, majd felülírja a régi adatokat az újjal
+        /// </summary>
         public static void SzAdatokSzerk()
         {
             Console.BackgroundColor = Program.background;
@@ -227,6 +233,9 @@ namespace FutoversenyApp.Controllers
             Program.Main();
         }
 
+        /// <summary>
+        /// Bekéri az edzés adatait
+        /// </summary>
         public static void Edzes(List<Futas> futasok)
         {
             Console.BackgroundColor = Program.background;
@@ -321,7 +330,7 @@ namespace FutoversenyApp.Controllers
         }
 
         /// <summary>
-        /// Újra bekéri az edzés adatait, majd felülírja az régi adatokat az újjal
+        /// Újra bekéri az edzés adatait, majd felülírja a régi adatokat az újjal
         /// </summary>
         public static void Szerkesztes(List<Futas> futasok, int kivalasztott)
         {

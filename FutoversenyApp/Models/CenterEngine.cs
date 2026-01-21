@@ -10,7 +10,7 @@ namespace menu.Models
     internal class CenterEngine
     {
         /// <summary>
-        /// Több sor kiírása középre igazítva
+        /// Több sor kiírása vízszintesen középre igazítva
         /// </summary>
         public static void Show(params string[] lines)
         {
@@ -25,7 +25,7 @@ namespace menu.Models
         }
 
         /// <summary>
-        /// Bekérő szöveg és bekérés egyel alatta kiírása középre igazítva
+        /// Bekérő szöveg kiírása és bekérés egyel alatta vízszintesen középre igazítva
         /// </summary>
         public static string ReadCentered(string prompt)
         {
@@ -45,7 +45,7 @@ namespace menu.Models
         }
 
         /// <summary>
-        /// Bekérő szöveg és bekérés egyel alatta kiírása középre igazítva, ESC-el vissza a főmenübe (bejelentkezéshez és regisztrációhoz)
+        /// Bekérő szöveg kiírása és bekérés egyel alatta vízszintesen középre igazítva, ESC-el meghív egy függvényt
         /// </summary>
         public static string ReadCenteredC(string prompt)
         {
@@ -90,7 +90,7 @@ namespace menu.Models
         }
 
         /// <summary>
-        /// Egy sor kiírása középre igazítva
+        /// Egy sor kiírása vízszintesen középre igazítva
         /// </summary>
         public static void CenterLine(string text)
         {

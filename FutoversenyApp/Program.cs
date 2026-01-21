@@ -38,6 +38,9 @@ namespace FutoversenyApp
             Menu();
         }
 
+        /// <summary>
+        /// A program főmenüje
+        /// </summary>
         public static void Menu()
         {
             // ha létezik a User.json fájl, akkor a menüben jelezze, hogy meg van adva a személyes adat
@@ -68,27 +71,28 @@ namespace FutoversenyApp
 
             while (true)
             {
+                // Menü megrajzolása
                 MenuDrawer("================= Futó App =================", items, selected);
 
+                // Lenyomott billentyű olvasása
                 ConsoleKey key = Console.ReadKey(true).Key;
 
                 if (key == ConsoleKey.Tab || key == ConsoleKey.DownArrow)
                 {
+                    // Le gomb vagy Tab -> lentebbi menüpont
                     selected = (selected + 1) % items.Length;
                     Console.BackgroundColor = background;
                 }
                 else if (key == ConsoleKey.UpArrow)
                 {
+                    // Fel gomb -> fentebbi menüpont
                     selected = (selected - 1 + items.Length) % items.Length;
                     Console.BackgroundColor = background;
                 }
                 else if (key == ConsoleKey.Enter)
                 {
+                    // Enter -> menüpont kiválasztása, while ciklus break-elése, switch-case következik a kiválasztott menüpont száma alapján
                     break;
-                }
-                else if (key == ConsoleKey.Escape)
-                {
-                    return;
                 }
             }
 
@@ -121,10 +125,10 @@ namespace FutoversenyApp
                     Console.Clear();
                     Console.BackgroundColor = Program.background;
                     Console.ForegroundColor = Program.textcolor;
-                    Console.WriteLine("Megtett össztáv: " + Controller.MegtettOssztav(futasok) + " m");
-                    Console.WriteLine("Sikerek száma: " + Futas.SikerSzamlalo(futasok) + " Ennyiből: " + futasok.Count);
-                    Console.WriteLine("Összesített futással töltött idő: " + Futas.Osszido(futasok));
-                    Console.WriteLine("\nEnterrel vissza a főmenübe");
+                    CenterEngine.CenterLine("Megtett össztáv: " + Controller.MegtettOssztav(futasok) + " m");
+                    CenterEngine.CenterLine("Sikerek száma: " + Futas.SikerSzamlalo(futasok) + " Ennyiből: " + futasok.Count);
+                    CenterEngine.CenterLine("Összesített futással töltött idő: " + Futas.Osszido(futasok));
+                    CenterEngine.CenterLine("Enterrel vissza a főmenübe");
                     Console.ReadKey();
                     Menu();
                     break;
@@ -137,6 +141,9 @@ namespace FutoversenyApp
             }
         }
 
+        /// <summary>
+        /// Külön menü a kilépés megerősítésére
+        /// </summary>
         static void Exit()
         {
             Console.BackgroundColor = background;
@@ -165,11 +172,6 @@ namespace FutoversenyApp
                 {
                     break;
                 }
-                else if (key == ConsoleKey.Escape)
-                {
-                    Main();
-                    return;
-                }
             }
 
             switch (selected)
@@ -183,6 +185,12 @@ namespace FutoversenyApp
             }
         }
 
+        /// <summary>
+        /// Középre igazított menüt jelenít meg a konzolon a megadott címmel és menüpontokkal, kiemelve a kiválasztott elemet.
+        /// </summary>
+        /// <param name="title">A konzol tetejére kiirt szöveg. Nem lehet <see langword="null"/>.</param>
+        /// <param name="items">Egy Menüpontokat tartalmazó tömb. Nem lehet <see langword="null"/> or empty.</param>
+        /// <param name="selected">A kiválasztott menüpont indexe, ami ki lesz emelve. Érvényes indexnek kell lennie az <paramref name="items"/> tömbön belül.</param>
         static void MenuDrawer(string title, string[] items, int selected)
         {
             Console.Clear();
@@ -210,6 +218,10 @@ namespace FutoversenyApp
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// Témák váltása
+        /// </summary>
+        /// <param name="selected">A menübe belépéskor alapártelmezetten kiválasztott menüpont indexe</param>
         static void Settings(int selected) 
         {
             Console.BackgroundColor = background;
@@ -223,7 +235,7 @@ namespace FutoversenyApp
                 "Fekete-Fehér (default)",
                 "Fehér-Fekete",
                 "Fekete-Piros-Zöld",
-                "Piros-Zöld",
+                "Kék-Fehér",
                 "Főmenü"
             };
 
@@ -246,10 +258,6 @@ namespace FutoversenyApp
                 else if (key == ConsoleKey.Enter)
                 {
                     break;
-                }
-                else if (key == ConsoleKey.Escape)
-                {
-                    return;
                 }
             }
 
