@@ -40,7 +40,7 @@ namespace FutoversenyApp
 
             Menu();
         }
-
+        #region Menük
         /// <summary>
         /// A program főmenüje
         /// </summary>
@@ -274,6 +274,8 @@ namespace FutoversenyApp
                     break;
             }
         }
+        #endregion
+
 
         /// <summary>
         /// Középre igazított menüt jelenít meg a konzolon a megadott címmel és menüpontokkal, kiemelve a kiválasztott elemet.

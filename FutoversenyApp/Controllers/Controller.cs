@@ -380,7 +380,7 @@ namespace FutoversenyApp.Controllers
                 }
             }
 
-            string idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
+            string idotartam = CenterEngine.ReadCentered("Időtartam (óó:pp:mm): ");
             if (idotartam == "")
             {
                 idotartam = futasok[kivalasztott].Idotartam;
@@ -389,7 +389,7 @@ namespace FutoversenyApp.Controllers
             {
                 while (true)
                 {
-                    idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
+                    idotartam = CenterEngine.ReadCentered("Időtartam (óó:pp:mm): ");
                     try
                     {
                         int teszt = int.Parse(idotartam.Split(':')[1]) * 1; // Teszt instrukció hogy legyen ami errort ad
