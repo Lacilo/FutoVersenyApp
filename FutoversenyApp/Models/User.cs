@@ -147,7 +147,7 @@ namespace FutoversenyApp.Models
                 szemelyHistory = new List<string[]>();
             }
 
-            if (szemelyHistory.Count > 1)
+            if (szemelyHistory.Count > 0)
             {
                 string[] utolso = szemelyHistory[szemelyHistory.Count - 1];
 
