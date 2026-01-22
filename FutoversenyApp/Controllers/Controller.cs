@@ -380,7 +380,7 @@ namespace FutoversenyApp.Controllers
                 }
             }
 
-            string idotartam = CenterEngine.ReadCentered("Időtartam (perc): ");
+            string idotartam = CenterEngine.ReadCentered("Időtartam (óó:pp:mm): ");
             if (idotartam == "")
             {
                 idotartam = futasok[kivalasztott].Idotartam;
