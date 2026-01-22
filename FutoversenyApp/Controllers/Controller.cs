@@ -480,10 +480,10 @@ namespace FutoversenyApp.Controllers
 
                 if (mode == 'i')
                 {
-                    //if(futas.Idotartam < max.Idotartam)
-                    //{
-                    //    min = futas;
-                    //}
+                    if(TimeSpan.Parse(futas.Idotartam) < TimeSpan.Parse(min.Idotartam))
+                    {
+                        min = futas;
+                    }
                 }
 
                 if (mode == 'm')
@@ -534,10 +534,10 @@ namespace FutoversenyApp.Controllers
 
                 if (mode == 'i')
                 {
-                    //if(futas.Idotartam > max.Idotartam)
-                    //{
-                    //    max = futas;
-                    //}
+                    if(TimeSpan.Parse(futas.Idotartam) > TimeSpan.Parse(max.Idotartam))
+                    {
+                        max = futas;
+                    }
                 }
 
                 if (mode == 'm')
