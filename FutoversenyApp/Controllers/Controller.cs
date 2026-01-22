@@ -380,16 +380,17 @@ namespace FutoversenyApp.Controllers
                 }
             }
 
-            string idotartam = CenterEngine.ReadCentered("Időtartam (óó:pp:mm): ");
-            if (idotartam == "")
+            string idotartam;
+            while (true)
             {
-                idotartam = futasok[kivalasztott].Idotartam;
-            }
-            else
-            {
-                while (true)
+                idotartam = CenterEngine.ReadCenteredC("Időtartam (óó:pp:mm): ");
+                if (idotartam == "")
                 {
-                    idotartam = CenterEngine.ReadCentered("Időtartam (óó:pp:mm): ");
+                    idotartam = futasok[kivalasztott].Idotartam;
+                    break;
+                }
+                else
+                {
                     try
                     {
                         int teszt = int.Parse(idotartam.Split(':')[1]) * 1; // Teszt instrukció hogy legyen ami errort ad
@@ -403,7 +404,6 @@ namespace FutoversenyApp.Controllers
                             idotartam += ":00"; // Ha nincs mehadva másodperc akkor ne crash
                             break;
                         }
-
                         break;
                     }
                     catch (Exception)
@@ -442,7 +442,7 @@ namespace FutoversenyApp.Controllers
             // Új megoldás mert az előző felűlírta a pulzust és tömeget mivel új objektumot hoztunk létre
             futasok[kivalasztott].Datum = DateTime.Parse(datum);
             futasok[kivalasztott].Tavolsag = int.Parse(tavolsag);
-            futasok[kivalasztott].Idotartam = idotartam;
+            futasok[kivalasztott].Idotartam = Futas.IdoTartam(idotartam);
             futasok[kivalasztott].Maxpulzus = int.Parse(maxpulzus);
 
             Futas.JsonWriter(futasok);

@@ -253,7 +253,7 @@ namespace FutoversenyApp.Models
         /// </summary>
         /// <param name="idotartam">az Időtartam</param>
         /// <returns>a legális időtartamot</returns>
-        string IdoTartam(string idotartam)
+        public static string IdoTartam(string idotartam)
         {
             int mp = int.Parse(idotartam.Split(':')[2]);
 

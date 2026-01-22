@@ -138,12 +138,23 @@ namespace FutoversenyApp.Models
         /// </summary>
         /// <remarks>
         /// Mivel a lista el van látva a [JsonInclude] taggel, így a User.json-be ezeket le is fogja menteni
+        /// Csak akkor ment ha volt változás
         /// </remarks>
         public void InitializeSzemelyHistory()
         {
             if (szemelyHistory == null)
             {
                 szemelyHistory = new List<string[]>();
+            }
+
+            if (szemelyHistory.Count > 1)
+            {
+                string[] utolso = szemelyHistory[szemelyHistory.Count - 1];
+
+                if (int.Parse(utolso[1]) == Tomeg && int.Parse(utolso[2]) == Nyugpul)
+                {
+                    return;
+                }
             }
 
             string[] history = new string[3];
