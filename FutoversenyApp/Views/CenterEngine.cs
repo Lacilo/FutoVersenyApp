@@ -14,7 +14,6 @@ namespace menu.Models
         /// </summary>
         public static void Show(params string[] lines)
         {
-            // Display multiple lines centered horizontally
             Console.Clear();
             foreach (var line in lines)
             {
@@ -29,9 +28,6 @@ namespace menu.Models
         /// </summary>
         public static string ReadCentered(string prompt)
         {
-            // Display a prompt centered horizontally, then get input centered
-
-            // Show prompt
             int xPrompt = Math.Max(0, (Console.WindowWidth - prompt.Length) / 2);
             Console.SetCursorPosition(xPrompt, Console.CursorTop);
             Console.Write(prompt);
@@ -65,13 +61,13 @@ namespace menu.Models
                     else if (key.Key == ConsoleKey.Escape)
                     {
                         Console.WriteLine();
-                        Program.Main(); // instantly go back to main menu
-                        return null; // this will never be used
+                        Program.Main();
+                        return null;
                     }
                     else if (key.Key == ConsoleKey.Backspace && input.Length > 0)
                     {
                         input.Length--;
-                        Console.Write("\b \b"); // erase last char
+                        Console.Write("\b \b");
                     }
                     else if (!char.IsControl(key.KeyChar))
                     {
