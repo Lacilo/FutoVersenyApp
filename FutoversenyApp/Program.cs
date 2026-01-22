@@ -34,6 +34,7 @@ namespace FutoversenyApp
 
             Menu();
         }
+
         #region Menük
         /// <summary>
         /// A program főmenüje

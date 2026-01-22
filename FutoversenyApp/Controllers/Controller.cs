@@ -457,6 +457,7 @@ namespace FutoversenyApp.Controllers
             futasok.RemoveAt(kivalasztott);
             Futas.JsonWriter(futasok);
         }
+
         public static Futas Min(List<Futas> futasok, char mode)
         {
             Futas min = futasok[0];
