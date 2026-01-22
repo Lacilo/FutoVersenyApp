@@ -1,4 +1,5 @@
 ﻿using FutoversenyApp.Controllers;
+using menu.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -341,7 +342,7 @@ namespace FutoversenyApp.Models
                     Console.ForegroundColor = Program.highlightText;
                 }
 
-                Console.WriteLine($"{userData[i][0]} - {userData[i][1]}kg    {userData[i][2]}BPM");
+                CenterEngine.CenterLine($"{userData[i][0]} - {userData[i][1]}kg    {userData[i][2]}BPM");
 
                 Console.ForegroundColor = Program.textcolor;
                 Console.BackgroundColor = Program.background;
@@ -355,8 +356,8 @@ namespace FutoversenyApp.Models
             if (new FileInfo("Runs.json").Length == 2)
             {
                 Console.Clear();
-                Console.WriteLine("Nincs adat");
-                Console.WriteLine("Enterrel tovább");
+                CenterEngine.CenterLine("Nincs adat");
+                CenterEngine.CenterLine("Enterrel tovább");
                 Console.ReadKey();
                 Program.Main();
             }
@@ -375,7 +376,7 @@ namespace FutoversenyApp.Models
                 Console.BackgroundColor = Program.highlight;
                 Console.ForegroundColor = Program.highlightText;
 
-                Console.WriteLine($"\n{hossz - until} további");
+                CenterEngine.CenterLine($"\n{hossz - until} további");
 
                 Console.BackgroundColor = Program.background;
                 Console.ForegroundColor = Program.textcolor;
@@ -437,7 +438,7 @@ namespace FutoversenyApp.Models
                     Console.BackgroundColor = Program.highlight;
                     Console.ForegroundColor = Program.highlightText;
 
-                    Console.WriteLine($"\n{hossz - (until)} további");
+                    CenterEngine.CenterLine($"\n{hossz - (until)} további");
 
                     Console.BackgroundColor = Program.background;
                     Console.ForegroundColor = Program.textcolor;

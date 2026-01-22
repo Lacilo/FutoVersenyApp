@@ -270,7 +270,6 @@ namespace FutoversenyApp
         }
         #endregion
 
-
         /// <summary>
         /// Középre igazított menüt jelenít meg a konzolon a megadott címmel és menüpontokkal, kiemelve a kiválasztott elemet.
         /// </summary>
