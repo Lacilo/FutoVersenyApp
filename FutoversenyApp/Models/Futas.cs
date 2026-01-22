@@ -9,8 +9,8 @@ namespace FutoversenyApp.Models
     {
         private DateTime datum;
         private int tavolsag;
-        private string idotartam;
         private int maxpulzus;
+        private string _idotartam; // Érték tároló
 
         #region Konstruktorok
         public Futas(string datum, string tavolsag, string idotartam, string maxpulzus)
@@ -21,20 +21,11 @@ namespace FutoversenyApp.Models
 
             Datum = DateTime.Parse(datum);
             Tavolsag = int.Parse(tavolsag);
-            Idotartam = idotartam;
+
+            _idotartam = IdoTartam(idotartam);
+            Idotartam = _idotartam;
+
             Maxpulzus = int.Parse(maxpulzus);
-        }
-
-        public Futas(string[] futas)
-        {
-            User user = User.UserJsonReader();
-            this.Tomeg = user.Tomeg;
-            this.Nyugpul = user.Nyugpul;
-
-            Datum = DateTime.Parse(futas[0]);
-            Tavolsag = int.Parse(futas[1]);
-            Idotartam = futas[2];
-            Maxpulzus = int.Parse(futas[3]);
         }
 
         public Futas()
@@ -74,8 +65,8 @@ namespace FutoversenyApp.Models
         }
         public string Idotartam
         {
-            get => idotartam;
-            set => idotartam = value;
+            get;
+            set;
         }
         public int Tomeg
         {
@@ -255,6 +246,28 @@ namespace FutoversenyApp.Models
             double kcal = met * this.Tomeg * hosszOra;
 
             return Math.Round(kcal,2);
+        }
+
+        /// <summary>
+        /// Kezeli azokat az Időtartamokat, amik illegálisak (pl 00:78:86)
+        /// </summary>
+        /// <param name="idotartam">az Időtartam</param>
+        /// <returns>a legális időtartamot</returns>
+        string IdoTartam(string idotartam)
+        {
+            int mp = int.Parse(idotartam.Split(':')[2]);
+
+            int perc = int.Parse(idotartam.Split(':')[1]);
+
+            int ora = int.Parse(idotartam.Split(':')[0]);
+
+            perc += (mp / 60);
+            mp %= 60;
+
+            ora += (perc / 60);
+            perc %= 60;
+
+            return $"{ora:D2}:{perc:D2}:{mp:D2}";
         }
     }
 }

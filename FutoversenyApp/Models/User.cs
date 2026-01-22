@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using FutoversenyApp;
 
 namespace FutoversenyApp.Models
 {
@@ -24,16 +23,6 @@ namespace FutoversenyApp.Models
             Nyugpul = int.Parse(nyugpul);
             Celido = int.Parse(celido);
             Szuldat = DateTime.Parse(szuldat);
-            InitializeSzemelyHistory();
-        }
-
-        public User(string[] user)
-        {
-            Magassag = int.Parse(user[0]);
-            Tomeg = int.Parse(user[1]);
-            Nyugpul = int.Parse(user[2]);
-            Celido = int.Parse(user[3]);
-            Szuldat = DateTime.Parse(user[4]);
             InitializeSzemelyHistory();
         }
 
@@ -101,7 +90,9 @@ namespace FutoversenyApp.Models
             set 
             { 
                 if (value < DateTime.Now) 
-                    szuldat = value; 
+                    szuldat = value;
+                else
+                    szuldat = DateTime.Now;
             } 
         }
         #endregion
