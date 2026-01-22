@@ -330,6 +330,7 @@ namespace FutoversenyApp.Models
 
         public void DisplayWABPM(User user, int fromThisPos, int cursor, int until)
         {
+            Console.BackgroundColor = Program.background;
             Console.Clear();
 
             List<string[]> userData = user.szemelyHistory;
@@ -355,6 +356,7 @@ namespace FutoversenyApp.Models
         {
             if (new FileInfo("Runs.json").Length == 2)
             {
+                Console.BackgroundColor= Program.background;
                 Console.Clear();
                 CenterEngine.CenterLine("Nincs adat");
                 CenterEngine.CenterLine("Enterrel tovább");
