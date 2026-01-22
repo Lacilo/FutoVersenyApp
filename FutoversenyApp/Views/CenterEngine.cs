@@ -34,11 +34,7 @@ namespace menu.Models
             // Show prompt
             int xPrompt = Math.Max(0, (Console.WindowWidth - prompt.Length) / 2);
             Console.SetCursorPosition(xPrompt, Console.CursorTop);
-            Console.WriteLine(prompt);
-
-            // Move cursor to new line, centered
-            int inputX = Console.WindowWidth / 2;
-            Console.SetCursorPosition(inputX, Console.CursorTop);
+            Console.Write(prompt);
 
             string input = Console.ReadLine();
             return input;
@@ -51,10 +47,7 @@ namespace menu.Models
         {
             int xPrompt = Math.Max(0, (Console.WindowWidth - prompt.Length) / 2);
             Console.SetCursorPosition(xPrompt, Console.CursorTop);
-            Console.WriteLine(prompt);
-
-            int inputX = Console.WindowWidth / 2;
-            Console.SetCursorPosition(inputX, Console.CursorTop);
+            Console.Write(prompt);
 
             StringBuilder input = new StringBuilder();
 

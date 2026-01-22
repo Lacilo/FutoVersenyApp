@@ -24,6 +24,9 @@ namespace FutoversenyApp
         public static Display display = new Display();
         public static User user = User.UserJsonReader();
 
+        /// <summary>
+        /// Main
+        /// </summary>
         public static void Main()
         {
             Console.BackgroundColor = background;
@@ -186,43 +189,10 @@ namespace FutoversenyApp
         }
 
         /// <summary>
-        /// Középre igazított menüt jelenít meg a konzolon a megadott címmel és menüpontokkal, kiemelve a kiválasztott elemet.
-        /// </summary>
-        /// <param name="title">A konzol tetejére kiirt szöveg. Nem lehet <see langword="null"/>.</param>
-        /// <param name="items">Egy Menüpontokat tartalmazó tömb. Nem lehet <see langword="null"/> or empty.</param>
-        /// <param name="selected">A kiválasztott menüpont indexe, ami ki lesz emelve. Érvényes indexnek kell lennie az <paramref name="items"/> tömbön belül.</param>
-        static void MenuDrawer(string title, string[] items, int selected)
-        {
-            Console.Clear();
-
-            Console.BackgroundColor = background;
-            Console.ForegroundColor = textcolor;
-            CenterEngine.CenterLine(title);
-            Console.WriteLine();
-
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (i == selected)
-                {
-                    Console.BackgroundColor = highlight;
-                    Console.ForegroundColor = highlightText;
-                }
-                else
-                {
-                    Console.BackgroundColor = background;
-                    Console.ForegroundColor = textcolor;
-                }
-
-                CenterEngine.CenterLine($"{items[i]}");
-            }
-            Console.ResetColor();
-        }
-
-        /// <summary>
         /// Témák váltása
         /// </summary>
         /// <param name="selected">A menübe belépéskor alapártelmezetten kiválasztott menüpont indexe</param>
-        static void Settings(int selected) 
+        static void Settings(int selected)
         {
             Console.BackgroundColor = background;
             Console.Clear();
@@ -241,7 +211,7 @@ namespace FutoversenyApp
 
             while (true)
             {
-                MenuDrawer("================= Témák: =================",items, selected);
+                MenuDrawer("================= Témák: =================", items, selected);
 
                 ConsoleKey key = Console.ReadKey(true).Key;
 
@@ -303,6 +273,39 @@ namespace FutoversenyApp
                     Main();
                     break;
             }
+        }
+
+        /// <summary>
+        /// Középre igazított menüt jelenít meg a konzolon a megadott címmel és menüpontokkal, kiemelve a kiválasztott elemet.
+        /// </summary>
+        /// <param name="title">A konzol tetejére kiirt szöveg. Nem lehet <see langword="null"/>.</param>
+        /// <param name="items">Egy Menüpontokat tartalmazó tömb. Nem lehet <see langword="null"/> or empty.</param>
+        /// <param name="selected">A kiválasztott menüpont indexe, ami ki lesz emelve. Érvényes indexnek kell lennie az <paramref name="items"/> tömbön belül.</param>
+        static void MenuDrawer(string title, string[] items, int selected)
+        {
+            Console.Clear();
+
+            Console.BackgroundColor = background;
+            Console.ForegroundColor = textcolor;
+            CenterEngine.CenterLine(title);
+            Console.WriteLine();
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (i == selected)
+                {
+                    Console.BackgroundColor = highlight;
+                    Console.ForegroundColor = highlightText;
+                }
+                else
+                {
+                    Console.BackgroundColor = background;
+                    Console.ForegroundColor = textcolor;
+                }
+
+                CenterEngine.CenterLine($"{items[i]}");
+            }
+            Console.ResetColor();
         }
 
         /// <summary>
