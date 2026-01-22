@@ -225,8 +225,9 @@ namespace FutoversenyApp.Controllers
             user.Nyugpul = int.Parse(nyugpul);
             user.Celido = int.Parse(celido);
             user.Szuldat = DateTime.Parse(szuldat);
-            string[] adatok = { DateTime.Now.ToString(), tomeg, nyugpul };
-            user.szemelyHistory.Add(adatok);
+            // string[] adatok = { DateTime.Now.ToString(), tomeg, nyugpul };
+            // user.szemelyHistory.Add(adatok);
+            user.InitializeSzemelyHistory();
 
             User.JsonWriter(user);
 
