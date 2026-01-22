@@ -75,7 +75,7 @@ namespace FutoversenyApp.Models
             Console.WriteLine("Szerkesztés: E\t Törlés: Delete\nLétrehozás: C\t Szortírozás beállítások: S");
             DisplaySeparator();
 
-            ConsoleKeyInfo key = Console.ReadKey();                
+            ConsoleKeyInfo key = Console.ReadKey();
 
             while (true)
             {
@@ -87,7 +87,7 @@ namespace FutoversenyApp.Models
                         {
                             posOnPage = 9;
                         }
-                        if((allPage + 1) / (page + 1) == 1 && Futasok.Count - page * 10 <= posOnPage)
+                        if ((allPage) / (page + 1) == 1 && Futasok.Count - page * 10 <= posOnPage)
                         {
                             posOnPage--;
                         }
@@ -162,7 +162,7 @@ namespace FutoversenyApp.Models
         {
             dispAsc = !dispAsc;
 
-            Console.SetCursorPosition(95, 15);            
+            Console.SetCursorPosition(95, 15);
 
             if (!dispAsc)
             {
@@ -210,7 +210,7 @@ namespace FutoversenyApp.Models
             DisplaySortMenu(sortMenuCursor);
             DisplayAscEnableMenu();
 
-            ConsoleKeyInfo key = Console.ReadKey();                   
+            ConsoleKeyInfo key = Console.ReadKey();
 
             while (true)
             {
@@ -344,7 +344,7 @@ namespace FutoversenyApp.Models
                 Console.WriteLine($"{userData[i][0]} - {userData[i][1]}kg    {userData[i][2]}BPM");
 
                 Console.ForegroundColor = Program.textcolor;
-                Console.BackgroundColor= Program.background;
+                Console.BackgroundColor = Program.background;
             }
 
             //Console.WriteLine($"{cursor}\n{fromThisPos} -> {until}\n{user.szemelyHistory.Count - until}");
@@ -404,16 +404,17 @@ namespace FutoversenyApp.Models
                         }
                         else if (wabpmCursor > hossz - 1) wabpmCursor = hossz - 1;
 
-                            break;
+                        break;
 
                     case ConsoleKey.UpArrow:
                         wabpmCursor--;
                         //Console.WriteLine("fel");
-                        if (wabpmCursor < 0){ 
+                        if (wabpmCursor < 0)
+                        {
                             wabpmCursor = 0;
 
                             start--;
-                            until = start + 10;                    
+                            until = start + 10;
                         }
 
                         break;
@@ -423,9 +424,10 @@ namespace FutoversenyApp.Models
                         break;
                 }
 
-                if (start < 0) {
+                if (start < 0)
+                {
                     start = 0;
-                    until = start + 10;        
+                    until = start + 10;
                 }
                 if (until > hossz) until = hossz;
                 DisplayWABPM(user, start, wabpmCursor, Math.Min(until, hossz));
@@ -439,7 +441,7 @@ namespace FutoversenyApp.Models
 
                     Console.BackgroundColor = Program.background;
                     Console.ForegroundColor = Program.textcolor;
-                }                
+                }
                 //Console.WriteLine(sortMenuCursor);
                 key = Console.ReadKey();
             }
